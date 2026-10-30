@@ -1,0 +1,10 @@
+Native binaries: official MSYS2 mingw64 packages, https://repo.msys2.org/mingw/mingw64/
+Rubber Band 3.3.0-2, FFTW 3.3.11-2, libsamplerate 0.2.2-1,
+libgcc and libstdc++ 16.2.0-6, libwinpthread 14.0.0.r98.g19f5121a2-1.
+Rubber Band and FFTW are GPL libraries; see bundled RubberBand.LICENSE.txt.
+Corresponding upstream source: https://breakfastquay.com/rubberband/ and https://www.fftw.org/ .
+MSYS2 build recipes: https://github.com/msys2/MINGW-packages .
+Application C# source is included in source/. Build with the included script,
+placing source files beside the DLLs or adjusting its reference paths.
+This application build is provided under GPL version 2 or later, consistent
+with the linked Rubber Band library. Third-party components retain their licenses.
