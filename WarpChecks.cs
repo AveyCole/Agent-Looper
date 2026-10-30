@@ -1,0 +1,9 @@
+using System;
+using System.IO;
+using System.Linq;
+namespace LoopPedal {
+static class WarpChecks {
+ public static void Run(){try{using(var e=new Engine()){var a=new Layer{Name="A",Audio=new float[96000],Original=new float[96000],Pitch=5};var b=new Layer{Name="B",Audio=new float[192000],Original=new float[192000],Pitch=-7,Stretch=1.75,Offset=1234};e.Layers.Add(a);e.Layers.Add(b);e.LoopFrames=48000;e.Frame=12000;e.StageWarp(new[]{a,b},new[]{Enumerable.Repeat(.1f,96000).ToArray(),Enumerable.Repeat(.2f,96000).ToArray()},48000);e.Mix(new float[72000],36000);if(e.WarpLayers||!e.WarpPending)throw new Exception("Warp activated before restart");e.Mix(new float[2],1);if(!e.WarpLayers||e.WarpPending||e.LoopFrames!=48000||e.Layers.Any(l=>l.Audio.Length!=96000))throw new Exception("Warp missed common restart/duration");if(a.Pitch!=5||b.Pitch!=-7||b.Stretch!=1.75||b.Offset!=1234||Math.Abs(e.EffectiveStretch(b)-.5)>.000001)throw new Exception("Warp changed user settings or effective duration");b.TrimLength=.25;if(e.EffectiveStretch(b)!=2||e.LoopFrames!=48000)throw new Exception("Trim broke locked cycle");e.CancelWarp();if(e.WarpLayers||b.Pitch!=-7||e.EffectiveStretch(b)!=1.75)throw new Exception("Unlock did not restore settings");}
+ using(var e=new Engine()){e.Playing=false;var l=new Layer{Audio=new float[4000],Original=new float[4000]};e.Layers.Add(l);e.LoopFrames=2000;e.StageWarp(new[]{l},new[]{new float[4000]},2000);if(!e.WarpLayers||e.WarpPending)throw new Exception("Paused warp did not apply");}
+ File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"warp-tests.txt"),"PASS: all layers publish together at the exact master restart; common duration; independent pitch/settings retained; trim keeps locked duration; unlock restores independent settings; paused warp applies.");}catch(Exception e){File.WriteAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,"warp-tests.txt"),"FAIL: "+e);Environment.ExitCode=1;}}
+}}

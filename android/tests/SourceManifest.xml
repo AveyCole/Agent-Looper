@@ -1,0 +1,1 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.aveycole.agentlooper.source"><uses-sdk android:minSdkVersion="29" android:targetSdkVersion="35"/><application android:label="Agent Looper Test Source" android:allowAudioPlaybackCapture="true"><activity android:name=".SourceActivity" android:exported="true"/></application></manifest>

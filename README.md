@@ -1,8 +1,18 @@
 # Agent Looper
 
-![Agent Looper interface](docs/screenshot.png)
+Native Windows and Android dual audio looper.
 
-[Download the Windows portable build](Agent-Looper-Windows.zip)
+- [Windows portable download](Agent-Looper-Windows.zip)
+- [Android APK v0.2.0](downloads/Agent-Looper-Android.apk)
+- [Android instructions and source](android/README.md)
+
+Both versions now include Wait for Input and per-bank Warp. Windows WARP highlights while pending or active; it currently uses the same highlight for both states.
+
+![Windows interface](docs/screenshot.png)
+
+[Android interface](docs/android.png)
+
+## Windows
 
 Run **Agent-Looper.exe** from the extracted portable folder. Keep all included DLLs and the tools folder beside it. Use one Agent Looper instance at a time. Older builds are preserved. Windows x64 and .NET Framework 4.7.2 or later are required.
 
@@ -66,3 +76,11 @@ Live processing uses the official MSYS2 x64 Rubber Band 3.3 package and its FFTW
 Additional verified checks: --measure-overdub-test, --live-filter-test, --automatic-overdub-test, --native-live-test, --realtime-ui-test. --realtime-hardware-test passed on the Zoom ASIO clock with native live pitch/stretch feeding B and hardware output suppressed. These checks do not substitute for an audible listening test on your monitoring setup.
 
 Verified tests: --recording-test, --quality-test, --dual-test, --studio-routing-test, --midi-test, --click-test, --pitch-test, --handles-test, --dual-ui-test. These verify unity capture, no self-summing, exact quantized starts/playback, A-to-B isolation, click exclusion, note/CC mapping/persistence, R3 pitch/duration, handle edits/zoom, and independent UI controls. --dual-hardware-test also passed with real simultaneous one-second/three-second Zoom ASIO captures and silent output. MIDI protocol tests were synthetic; no physical controller button was pressed by the tests.
+
+## Wait for Input and Warp
+
+WAIT INPUT arms Record/Overdub until a selected input crosses the adjacent dBFS threshold (default −40; range −72 to −6). NOW starts on the exact crossing sample. Quantization and count-in begin after detection, preserving their scheduled boundary. Cancel with Record or Stop; no silent layer is created. Auto OD continues without waiting for a new signal every pass. No pre-roll is added: lower the threshold for soft attacks.
+
+WARP fits every layer in one bank to the current master cycle and common downbeat while preserving pitch. Windows prepares high-quality Rubber Band renders, then publishes all layers together at the next loop restart after rendering completes. Paused banks apply immediately. Subsequent live pitch/trim edits use the locked cycle; disabling Warp restores independent lengths and stretch settings. Original takes are retained. This aligns whole loop durations, not individual detected beats/transients. A and B still have independent cycles.
+
+Additional checks passed: --input-trigger-test, --warp-test, --warp-ui-test, including exact threshold onset, count-in/quantization interaction, Auto OD, atomic layer alignment and live edits while warped.
