@@ -2,7 +2,7 @@
 
 Native Windows audio loop pedal.
 
-[Download Windows 1.0](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.0) · [Portable ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md)
+[Download Windows 1.0](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.0) · [Portable ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
