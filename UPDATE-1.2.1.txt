@@ -1,0 +1,13 @@
+Agent Looper 1.2.1
+
+BOTH VERSIONS — FILTER is now independent for A and B. Select A SENDS or B SENDS on the FX page; all four top-level knobs belong to that looper. Effect types, detailed Reverb/Delay/Grain parameters, Freeze, and routing remain shared. Filter MIDI assignments are also independent. Android projects save both filters; older projects retain the previous common filter value on both loopers.
+
+WINDOWS — Recording now uses pooled fixed-size blocks instead of repeatedly resizing/copying the whole capture buffer on the audio callback. This removes the growing-take copies measured during recording. In destructive mode, overdubs started away from the parent loop's beginning now have their own splice smoothed before merging, so the mid-loop capture seam is no longer left as a hard discontinuity. General destructive consolidation also respects each source's seam.
+
+Capture/playback gain remains unity: raw recorded samples are not normalized or boosted. Mono Input 2 and destructive overdub checks verify .1 existing + .2 input = .3 stored and played. Comparing this with the Zoom's direct monitoring still requires matching the hardware monitoring and USB return levels; those are different listening paths. Physical Zoom playback should be checked by ear with this build.
+
+ANDROID — Save Project, Rename, and other text-entry sheets move above the keyboard. The name field remains visible in portrait and landscape, landscape avoids the full-screen keyboard editor, and the keyboard Done key submits the form.
+
+VALIDATION — Windows recording, automatic overdub, dual/timed capture, input-trigger, history/destructive, fullscreen UI, independent sends/filters, handle reverse, float-quality, and stopped-audio checks passed. A reproduced destructive splice jump fell from 1.4 to under .0046 per sample at four different start positions. Fixed-block capture preserved exact samples across block boundaries without callback block allocations in the prepared-buffer check. Android DSP/project compatibility, independent filter/MIDI, and real keyboard visibility checks passed in both orientations.
+
+Extract the full Windows ZIP and close older app copies before launching Agent-Looper.exe. The APK remains private/local; no public upload was made.

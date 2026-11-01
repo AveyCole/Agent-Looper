@@ -10,7 +10,8 @@ sealed partial class Engine {
  public double EffectiveStretch(Layer layer){return WarpLayers?WarpFrames/(double)Math.Max(1,(int)Math.Round(layer.Original.Length/2*layer.TrimLength)):layer.Stretch;}
  public void StageWarp(Layer[] layers,float[][] audio,int frames){lock(Gate){WarpFrames=frames;warpLayers=layers;warpAudio=audio;long phase=((Frame-LoopOrigin)%frames+frames)%frames;warpAt=Frame+frames-phase;WarpPending=true;if(!Playing)CommitWarpIfDue();}}
  void CommitWarpIfDue(){if(!WarpPending||Playing&&Frame<warpAt)return;WarpLayers=true;WarpPending=false;LoopFrames=WarpFrames;for(int i=0;i<warpLayers.Length;i++){var layer=warpLayers[i];if(!Layers.Contains(layer))continue;if(layer.Stream!=null){retiredWarp.Enqueue(layer.Stream);layer.Stream=null;}layer.LiveWet=0;layer.PreviousAudio=layer.Audio;layer.PreviousPhaseDelta=LoopOrigin-layer.Offset;layer.Transition=960;layer.Audio=warpAudio[i];layer.LivePlaybackFrames=WarpFrames;}warpLayers=null;warpAudio=null;}
- public void RetireWarpStreams(){LiveStretch[] old;lock(Gate){old=retiredWarp.ToArray();retiredWarp.Clear();}foreach(var stream in old)stream.Dispose();}
+ public void RetireStream(LiveStretch stream){if(stream==null)return;stream.RequestStop();lock(Gate)retiredWarp.Enqueue(stream);}
+ public void RetireWarpStreams(bool wait=false){LiveStretch[] old;lock(Gate){if(retiredWarp.Count==0)return;old=retiredWarp.ToArray();retiredWarp.Clear();}foreach(var stream in old)stream.RequestStop();if(wait){foreach(var stream in old)stream.Dispose();}else System.Threading.ThreadPool.QueueUserWorkItem(_=>{foreach(var stream in old)stream.Dispose();});}
  public void CancelWarp(){lock(Gate){WarpRevision++;WarpPending=false;WarpLayers=false;warpLayers=null;warpAudio=null;}}
 }
 partial class Pedal {
