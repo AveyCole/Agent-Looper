@@ -1,0 +1,11 @@
+Agent Looper 1.2.2 — Independent granular Freeze
+
+Choose A SENDS or B SENDS on the FX page. The granular button now says A FREEZE or B FREEZE and affects only that looper. Each holds its own audio capture. You can freeze A while B stays live, freeze both at different moments, or release either without releasing the other.
+
+The grain tab's * indicator follows the selected looper's Freeze state. Granular mode/type, detailed parameters and serial routing remain shared. Reverb/Delay/Grain sends and Filter remain independent as in 1.2.1. FX RESET resets both loopers.
+
+Android project files preserve the separate Freeze flags. Older project files restore their formerly shared Freeze flag on both loopers. Audio export copies the selected looper's frozen history.
+
+Validated on both engines for Granular, Clouds and Cloud Delay: frozen/live audio isolation, release one while holding the other, and selected-bank copied frozen audio. Windows FX-page selector/readout tests and Android touch/readout tests passed, including Android portrait and landscape. Includes 1.2.1's recording-buffer/splice fixes, independent filters and keyboard-aware project-name sheet.
+
+The existing Windows 1.2.1 build has been pushed to main as requested. These 1.2.2 packages are local downloads; no APK has been made public.

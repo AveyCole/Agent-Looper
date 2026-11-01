@@ -1,0 +1,12 @@
+Agent Looper 1.2.5 — Stronger Cloudy
+
+CLOUDY now has a much more pronounced range in both Clouds and Cloud Delay.
+
+Cloud Delay: lower settings retain the clear Window echo; the upper range progressively replaces it with grains, reaching a fully granular feed at maximum. Grain density changes across the whole knob range instead of reaching its ceiling early when the Density switch is at 12.
+Clouds and Cloud Delay: stronger diffusion increasingly replaces the clear grain taps, giving the upper range a much more smeared, sustained cloud. Low settings remain useful for definition. Sub-audible DC is removed before the diffusion path to prevent buildup at high feedback.
+
+Cloudy changes are smoothed, including during Freeze. The maximum grain voice budget is unchanged. Existing projects retain their knob values; the Cloudy character at those values is intentionally stronger. Grain size, spray, spread, Window and pitch controls retain their ranges. Windows and Android use the same new Cloudy curves. Android also retains 1.2.4's independent input capture and smooth source transitions.
+
+Validation: both DSP engines passed endpoint contrast, diffused-tail, live frozen Cloudy sweep, maximum positive/negative feedback with biased input, and their audio regression suites. The legacy Window/Pitch/Texture reference comparison is retained at Cloudy zero; the redesigned Cloudy range is tested separately.
+
+Local packages only; no APK has been uploaded publicly.

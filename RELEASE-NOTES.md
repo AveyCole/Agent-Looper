@@ -1,14 +1,20 @@
-# Agent Looper 1.2.1 — Windows
+# Agent Looper 1.2.5 — Windows
 
-- Independent A/B Reverb, Delay and Grain sends, plus independent filters. Effect types, detailed settings, Freeze and routing remain shared.
-- Dedicated FX page, centered knob labels, and serial effect routing ordered by the visible tabs. Hold a tab for one second, then drag it to reorder.
-- Headphone button for input monitoring; actionable ASIO busy/unavailable messages and automatic retry.
-- Distinct curved Start/End waveform grips. Crossing the grips reverses the selected region; Escape cancels a Windows drag.
-- Stopped layers and silent FX skip unnecessary processing. Native audio workers retire away from the UI, and rebuilt FX editors release their resources.
-- Fixed-size pooled recording blocks replace growing capture buffers. Destructive overdubs started mid-loop receive splice smoothing before merging. Raw samples are not normalized or boosted.
+- **Stronger CLOUDY:** a wider change from defined echoes/grains to a dense, diffuse cloud. Cloud Delay progressively replaces the clear echo with grains, and density changes across the full control range. Live changes are smoothed, including during Freeze. The grain voice limit is unchanged.
+- **Independent A/B Freeze:** hold different grain captures for the two loopers, or release either separately. Detailed effect parameters and routing remain shared; sends and filters remain independent.
+- **Expanded grain controls:** 2–1,000 ms Grain Size, up to 2 seconds of Spray, and 0–200% Spread. Existing parameter values and double-click defaults are retained.
+- **Smoother Freeze release:** resumed input/feedback is spliced to the frozen tail over 50 ms, removing a reproduced delayed click. Eight seconds of grain history cover long grains, maximum pitch, position and spray together.
+- **Feedback stability:** sub-audible DC is removed before the stronger diffusion path to prevent buildup at high feedback.
+- Includes the earlier pooled recording buffers, destructive-overdub splice fixes, idle-audio improvements, MIDI controls, custom UI and dedicated fullscreen FX page.
 
-Extract the complete portable ZIP and run **Agent-Looper.exe**. Close older copies before using a single-client ASIO driver. Keep DLLs, tools and licenses together. Requires Windows x64 and .NET Framework 4.7.2 or later.
+Existing projects/parameter settings retain their numeric values; the CLOUDY character at those values is intentionally stronger.
 
-Validation passed: capture/playback unity, mono Input 2 destructive sums, exact capture block boundaries, automatic overdub, quantized/timed dual capture, history, independent sends/filters in all routing modes, waveform/reverse gestures, float-quality checks, fullscreen UI, and stopped-audio silence. The reproduced destructive splice jump fell from 1.4 to below 0.0046 per sample. Hardware listening remains necessary to confirm behavior with a particular interface.
+## Run
+
+Extract the complete portable ZIP and run **Agent-Looper.exe**. Keep DLLs, tools and licenses together. Requires Windows x64 and .NET Framework 4.7.2 or later. Close older copies before using a single-client ASIO driver.
+
+## Validation
+
+Passed Windows real-time regression checks: stopped-output silence, mono Input 2 destructive recording at unity, fixed recording-block boundaries, arbitrary-position overdub splices, independent A/B sends, filters and frozen audio, copied frozen exports, expanded grain extremes, live frozen CLOUDY sweeps, and maximum positive/negative feedback with biased input. Hardware listening remains necessary for a particular interface and mixer setup.
 
 This update distributes Windows software only. No Android APK, app bundle or signing key is included. See `SHA256SUMS.txt` for the portable ZIP checksum.

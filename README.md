@@ -1,8 +1,8 @@
-# Agent Looper 1.2.1
+# Agent Looper 1.2.5
 
 Native Windows audio loop pedal.
 
-[Download Windows 1.2.1](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Portable ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
+[Download Windows 1.2.5](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Portable ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
@@ -20,7 +20,7 @@ Record starts/finishes a take; Overdub adds another pass; Play stops/restarts pl
 
 Drag the curved waveform grips to trim or extend the clip: Start has a top play-arrow grip and End has a bottom stop grip. Crossing either grip past the other reverses the selected region; crossing back restores forward playback. Scroll to zoom, Shift+scroll to pan. EDIT collapses the layer controls. Pitch, stretch, filter, level and pan can be adjusted during playback; Warp synchronizes separate layers to a shared cycle. Destructive mode hides Warp.
 
-FX opens a dedicated page. In Dual mode, A SENDS and B SENDS select independent Reverb, Delay, Grain and Filter levels for each looper. Detailed effect settings and routing are shared. In SERIAL, the tabs run left to right; hold a tab still for one second before dragging it to reorder. Double-click the effect tabs to cycle Hall/Room, Delay/Ping-Pong/POTS, and Granular/Clouds/Cloud Delay. Single-click a selected FX tab to collapse its parameters. Hall has decay and tone; delay has tempo divisions; grains have Freeze, fine Position, switches and dry/wet. Each looper’s filter sweeps lowpass on the left and highpass on the right, with bypass at center. Double-click knobs to restore defaults. Right-click supported buttons and knobs for MIDI Learn.
+FX opens a dedicated page. In Dual mode, A SENDS and B SENDS select independent Reverb, Delay, Grain and Filter levels for each looper. Detailed effect settings and routing are shared. Freeze is independent for A and B, with a separate captured grain buffer for each looper. In SERIAL, the tabs run left to right; hold a tab still for one second before dragging it to reorder. Double-click the effect tabs to cycle Hall/Room, Delay/Ping-Pong/POTS, and Granular/Clouds/Cloud Delay. Single-click a selected FX tab to collapse its parameters. Hall has decay and tone; delay has tempo divisions; grains have independent A/B Freeze, fine Position, switches and dry/wet. Grain size spans 2–1,000 ms, Spray extends to 2 seconds, and Spread reaches 200%. CLOUDY has a stronger grain/diffusion range and smoothed live changes, including while frozen. Each looper’s filter sweeps lowpass on the left and highpass on the right, with bypass at center. Double-click knobs to restore defaults. Right-click supported buttons and knobs for MIDI Learn.
 
 Menus, dropdowns, buttons, displays and scroll rails use the dark app styling. **F11** enters fullscreen; **Escape** or the visible EXIT button leaves it.
 
@@ -32,7 +32,7 @@ MENU → Files imports audio or extracts audio from supported video formats usin
 
 Run `powershell -ExecutionPolicy Bypass -File build.ps1 -OutputName Agent-Looper.exe` from the repository root. The ZIP also includes the application source. Keep the native libraries and tools available when running a build. See the bundled license notices and `licenses/native/PROVENANCE.txt` for native dependencies.
 
-Windows 1.2.1 also uses pooled recording blocks to avoid growing-take copies on the audio callback, smooths destructive overdub splices at arbitrary loop positions, and lets silent FX sleep. Recording/playback gain tests remain at unity.
+Windows uses pooled recording blocks to avoid growing-take copies on the audio callback, smooths destructive overdub splices at arbitrary loop positions, and lets silent FX sleep. Recording/playback gain tests remain at unity below overload. Freeze release smoothly splices frozen history into resumed input. Version 1.2.5 strengthens Clouds and Cloud Delay while removing sub-audible DC from the diffusion feedback path.
 
 Windows UI validation: `Agent-Looper.exe --session-ui-test`. Audio and rendering checks are included in the source; automated checks do not replace listening on your hardware.
 

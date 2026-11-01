@@ -1,0 +1,13 @@
+Agent Looper 1.2.3
+
+Grain size: 2-1000 ms, with a logarithmic knob for fine control of small grains.
+Spray: expanded fourfold, up to 2 seconds of random offset (Cloud Delay also scales scatter with Cloudy).
+Spread: 0-200%; above 100% increasingly places grains fully left or right.
+Existing physical parameter values and double-tap defaults are retained. MIDI covers the new ranges.
+
+Freeze release now makes a 50 ms smooth splice from the frozen buffer's last sample into resumed live input/feedback. This removes the abrupt buffer join that could cause a delayed pop. Existing grains continue normally; no audio-thread allocation or output mute is added.
+Grain history increased from four to eight seconds to safely cover long grains, maximum pitch, position and spray together.
+
+Validated: reproduced Cloud Delay release jump 1.0 before / 0.000655 after; Clouds 0.950 before / 0.000338 after. Both engines passed extreme grain settings and repeated Freeze toggles, independent A/B Freeze tests and Windows idle/recording regression checks. Android project round trips, old project compatibility and emulator controls/defaults/MIDI checks passed. Physical-device listening remains the final check for the reported intermittent pop.
+
+Includes the independent A/B Freeze changes from 1.2.2. These packages are local only; the APK has not been uploaded publicly.
