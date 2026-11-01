@@ -1,109 +1,96 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agent Looper</title>
-<meta name="description" content="Agent Looper is a native Windows audio loop pedal. Download version 1.2.5 for Windows.">
-<meta name="color-scheme" content="dark light">
-<style>
-:root{
-  --bg:#0b0e12;--panel:#121820;--line:#252d38;--fg:#eceae4;--dim:#a3aab3;
-  --accent:#7ef0c2;--on-accent:#05130c;--focus:#8fc4ff;
-}
-@media (prefers-color-scheme:light){
-  :root{--bg:#f3f6f5;--panel:#ffffff;--line:#d3dcd8;--fg:#14181b;--dim:#566069;
-    --accent:#0a7352;--on-accent:#ffffff;--focus:#0b5cad}
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--fg);
-  font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-a{color:var(--accent)}
-a:focus-visible,.btn:focus-visible,.support-link:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
-.wrap{max-width:820px;margin:0 auto;padding:0 16px}
-header{padding:48px 0 8px}
-h1{margin:0;font-size:clamp(2.2rem,7vw,3.4rem);line-height:1.1;letter-spacing:-.02em}
-.tag{margin:10px 0 0;font-size:1.2rem;color:var(--dim)}
-.dl{margin:28px 0;padding:22px;background:var(--panel);border:1px solid var(--line);border-radius:12px}
-.btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:12px 26px;border-radius:8px;
-  background:var(--accent);color:var(--on-accent);font-size:1.15rem;font-weight:700;text-decoration:none}
-.btn:hover{filter:brightness(1.08)}
-.meta{margin:12px 0 0;color:var(--dim);font-size:.95rem}
-.links{margin:16px 0 0;display:flex;flex-wrap:wrap;gap:6px 22px;font-size:.98rem}
-figure{margin:0}
-.shot img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px}
-h2{margin:40px 0 10px;font-size:1.35rem}
-ol,ul{margin:0;padding-left:1.3em}
-li{margin:6px 0}
-.note{color:var(--dim)}
-.support{margin:56px 0 0;text-align:center}
-.cheddar{margin:0 auto;max-width:280px}
-.cheddar img{display:block;width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
-.cheddar figcaption{margin:8px 0 0;font-style:italic;font-size:15px;color:var(--dim)}
-.support-cta{margin:14px 0 0}
-.support-link{display:inline-flex;align-items:center;gap:10px;max-width:100%;min-height:48px;padding:12px 22px;
-  border:2px solid #252525;border-radius:8px;background:#ffdd00;color:#252525;font-size:16px;font-weight:700;
-  line-height:1.35;text-decoration:none}
-.support-link:hover{background:#ffe64b}
-.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-footer{margin:56px 0 0;padding:22px 0 40px;border-top:1px solid var(--line);color:var(--dim);font-size:.95rem}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Agent Looper — Native Windows Loop Pedal</title>
+  <meta name="description" content="Record, overdub and reshape audio with Agent Looper. Two loopers, editable layers, granular effects, delay, reverb and MIDI control. Download Windows 1.2.5.">
+  <meta name="theme-color" content="#0c1512">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:title" content="Agent Looper — Native Windows Loop Pedal">
+  <meta property="og:description" content="Two loopers. Editable layers. Granular, delay and reverb. A portable Windows audio app.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aveycole.github.io/Agent-Looper/">
+  <meta property="og:image" content="https://aveycole.github.io/Agent-Looper/screenshot.png">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <h1>Agent Looper</h1>
-  <p class="tag">Native Windows audio loop pedal.</p>
-</header>
-
-<main>
-  <section class="dl" aria-labelledby="dl-h">
-    <h2 id="dl-h" class="sr">Download</h2>
-    <a class="btn" href="https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip">Download for Windows</a>
-    <p class="meta">Version 1.2.5 &middot; Windows x64 &middot; ZIP, about 6.3&nbsp;MB &middot; Requires .NET Framework 4.7.2 or later</p>
-    <p class="links">
-      <a href="https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/SHA256SUMS.txt">SHA-256 checksums</a>
-      <a href="https://github.com/AveyCole/Agent-Looper/blob/main/RELEASE-NOTES.md">Release notes</a>
-      <a href="https://github.com/AveyCole/Agent-Looper">Source on GitHub</a>
-    </p>
-  </section>
-
-  <figure class="shot">
-    <img src="screenshot.png" width="1224" height="881" alt="The Agent Looper window: a mint-green waveform above REC, DUB, PLAY and UNDO buttons, with Stretch, Pitch, Filter, Level and Pan knobs below">
-  </figure>
-
-  <h2>Start looping</h2>
-  <ol>
-    <li>Extract the complete ZIP. Keep the DLLs, tools and license files next to the program.</li>
-    <li>Run <strong>Agent-Looper.exe</strong>.</li>
-    <li>Choose your input channels and an output in <strong>AUDIO</strong>. ASIO drivers are supported.</li>
-    <li>REC starts and finishes a take, DUB adds another pass, and PLAY stops or restarts playback.</li>
-  </ol>
-  <p class="note">New sessions start in Single + Destructive mode, like a hardware pedal. MENU &rarr; Layout turns on the second looper.</p>
-
-  <h2>What it does</h2>
-  <ul>
-    <li>Seamless overdubbing with Undo and Redo, input-triggered recording, quantized starts, optional count-in and click.</li>
-    <li>Edit loop regions with waveform handles and scroll-wheel zoom. Change pitch, stretch and filter during playback.</li>
-    <li>Separate A/B sends with shared effect settings: Hall and Room reverb, Delay, Ping-Pong and POTS delays, Granular, Clouds and Cloud Delay, independent A/B Freeze, and independent lowpass/highpass filters for A and B.</li>
-    <li>MIDI-assignable transports and knobs.</li>
-    <li>Import audio up to ten minutes, including MP3 and the audio from supported video files. Export 48&nbsp;kHz stereo 32-bit float WAV.</li>
-    <li>Press F11 for fullscreen.</li>
-  </ul>
-
-  <section class="support" aria-label="Support">
-    <figure class="cheddar">
-      <img src="cheddar-yawn.jpg" width="600" height="1052" alt="Gray and white cat yawning among dry oak leaves" loading="lazy">
-      <figcaption>Cheddar Butt</figcaption>
-      <p class="support-cta"><a class="support-link" href="https://buymeacoffee.com/aveycole" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">&#9749;</span><span>Support A.V. on Buy Me a Coffee</span><span class="sr"> (opens in a new tab)</span></a></p>
-    </figure>
-  </section>
-</main>
-
-<footer>
-  Agent Looper 1.2.5 &middot; <a href="https://github.com/AveyCole/Agent-Looper">GitHub</a> &middot; <a href="https://github.com/AveyCole/Agent-Looper/blob/main/LICENSE.txt">License</a>
-</footer>
-</div>
+  <a class="skip" href="#main">Skip to content</a>
+  <svg class="icon-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+    <symbol id="arrow-down" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 18v3h16v-3"/></symbol>
+    <symbol id="arrow-up-right" viewBox="0 0 24 24"><path d="M5 19 19 5M5 5h14v14"/></symbol>
+    <symbol id="arrow-right" viewBox="0 0 24 24"><path d="M3 12h17m-6-6 6 6-6 6"/></symbol>
+  </defs></svg>
+  <header class="header wrap">
+    <a class="brand" href="#" aria-label="Agent Looper home"><img src="wordmark.svg" width="482" height="52" alt="Agent Looper"></a>
+    <nav aria-label="Main navigation">
+      <a href="#workflow">The app</a><a href="#effects">Effects</a>
+      <a class="nav-download" href="#download">Get Agent Looper <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> Native Windows loop pedal</p>
+        <h1 id="hero-title">Record.<br>Overdub.<br><span>Reshape.</span></h1>
+        <p class="intro">Two loopers, editable layers and hands-on effects. Record an instrument, import a sample, then change what it does.</p>
+        <a class="button button-primary" href="https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip"><span>Download for Windows</span><svg aria-hidden="true"><use href="#arrow-down"/></svg></a>
+        <p class="download-meta">v1.2.5 <span>•</span> Windows x64 <span>•</span> Portable ZIP</p>
+      </div>
+      <div class="instrument" aria-label="Animated visual preview of a short loop and a longer loop. No audio.">
+        <div class="instrument-top"><span class="mono">DUAL LOOP PREVIEW</span><button id="motion-toggle" type="button" aria-pressed="false">Pause motion <span aria-hidden="true">Ⅱ</span></button></div>
+        <div class="loop loop-a">
+          <div class="loop-label"><span><b>A</b> / LOOPER</span><span class="loop-duration">04.000 <small>s</small></span></div>
+          <div class="loop-wave"><img src="wave-a.svg" width="704" height="120" alt=""><span class="playhead" aria-hidden="true"></span><span class="grip start" aria-hidden="true"></span><span class="grip end" aria-hidden="true"></span></div>
+          <div class="ruler mono" aria-hidden="true"><span>01</span><span>02</span><span>03</span><span>04</span></div>
+        </div>
+        <div class="loop loop-b">
+          <div class="loop-label"><span><b>B</b> / LOOPER</span><span class="loop-duration">12.000 <small>s</small></span></div>
+          <div class="loop-wave"><img src="wave-b.svg" width="704" height="120" alt=""><span class="playhead" aria-hidden="true"></span><span class="grip start" aria-hidden="true"></span><span class="grip end" aria-hidden="true"></span></div>
+          <div class="ruler mono" aria-hidden="true"><span>01</span><span>04</span><span>08</span><span>12</span></div>
+        </div>
+        <div class="instrument-foot"><span class="sync-mark" aria-hidden="true">↳</span><p>A short phrase and a long loop.<br><span>Independent lengths. Quantized starts.</span></p><span class="visual-label mono">VISUAL<br>PREVIEW</span></div>
+      </div>
+      <div class="hero-bottom mono"><span>DUAL LOOPERS / LAYER EDITING / MIDI CONTROL</span><a href="#workflow">EXPLORE <span aria-hidden="true">↓</span></a></div>
+    </section>
+    <div class="spec-strip"><div class="wrap specs"><span>48 kHz <small>audio engine</small></span><span>32-bit float <small>WAV export</small></span><span>ASIO + Windows audio <small>input / output</small></span><span>10-minute <small>audio imports</small></span></div></div>
+    <section class="section wrap" id="workflow" aria-labelledby="workflow-title">
+      <div class="section-heading"><div><p class="eyebrow">01 / THE LOOPERS</p><h2 id="workflow-title">One loop or two.<br>Overdub or edit each layer.</h2></div><p>Use a hardware-style destructive loop, or keep passes as separate layers. Add a second looper for phrases of different lengths.</p></div>
+      <div class="screen-frame">
+        <div class="screen-toolbar"><div class="screen-tabs" role="group" aria-label="App screenshot"><button class="is-active" type="button" data-screen="loops" aria-pressed="true">Loopers</button><button type="button" data-screen="effects" aria-pressed="false">Effects</button></div><a id="screen-full" href="screenshot.png" target="_blank" rel="noopener">Open screenshot <span aria-hidden="true">↗</span><span class="sr"> in a new tab</span></a></div>
+        <div class="screen-body" id="screen-body"><img id="app-screen" src="screenshot.png" width="1224" height="881" alt="Actual Agent Looper Windows interface showing two loopers, separate layers, waveform handles and recording controls" loading="lazy"></div>
+        <p class="screen-caption" id="screen-caption"><span class="status-dot" aria-hidden="true"></span> Actual Windows interface · Dual mode with separate layers</p>
+      </div>
+      <div class="feature-grid">
+        <article><span class="feature-number mono">/ 01</span><h3>Record & overdub</h3><p>Manual or automatic overdubs. Undo and Redo for recent passes, clears and deleted layers. Arm recording to wait for sound.</p></article>
+        <article><span class="feature-number mono">/ 02</span><h3>Edit the waveform</h3><p>Drag Start and End grips, cross them to reverse, and scroll to zoom. Adjust pitch, stretch, filter, level and pan.</p></article>
+        <article><span class="feature-number mono">/ 03</span><h3>Keep it in time</h3><p>BPM, measures, quantized starts and an optional count-in. A recording click stays out of your captured audio.</p></article>
+        <article><span class="feature-number mono">/ 04</span><h3>Use your controls</h3><p>Assign transports and knobs to MIDI. Hide the editors when you want space. Press F11 for immersive fullscreen.</p></article>
+      </div>
+    </section>
+    <section class="effects section" id="effects" aria-labelledby="effects-title"><div class="wrap">
+      <div class="effects-top"><div><p class="eyebrow">02 / THE EFFECTS</p><h2 id="effects-title">Grain. Delay.<br>Reverb.</h2><p class="effects-intro">Separate sends for A and B, shared effect parameters. Each looper gets its own filter and its own frozen grain capture.</p><p class="version-note mono"><span class="status-dot" aria-hidden="true"></span> NEW IN 1.2.5: A STRONGER CLOUDY RANGE</p></div>
+        <div class="effect-list">
+          <article><span class="fx-index mono">01</span><div><h3>Grain</h3><p>Granular / Clouds / Cloud Delay</p><span>Freeze, density, spray, stereo spread and dry/wet. Grain sizes from 2 ms to 1 second.</span></div><span class="dial dial-grain" aria-hidden="true"></span></article>
+          <article><span class="fx-index mono">02</span><div><h3>Delay</h3><p>Delay / Ping-Pong / POTS</p><span>Tempo-synced divisions, feedback, and the 12 kHz, 8-bit character of POTS.</span></div><span class="dial dial-delay" aria-hidden="true"></span></article>
+          <article><span class="fx-index mono">03</span><div><h3>Reverb</h3><p>Hall / Room</p><span>Decay and tone controls, with independent send levels for the two loopers.</span></div><span class="dial dial-reverb" aria-hidden="true"></span></article>
+        </div>
+      </div>
+      <div class="routing-panel">
+        <div class="routing-top"><div><p class="eyebrow">SIGNAL ROUTING</p><h3>Choose how they connect.</h3></div><div class="route-buttons" role="group" aria-label="Preview an effect routing mode"><button type="button" class="is-active" data-route="serial" aria-pressed="true">Serial</button><button type="button" data-route="parallel" aria-pressed="false">Parallel</button><button type="button" data-route="split" aria-pressed="false">Split</button></div></div>
+        <div id="route-diagram" class="route-diagram" role="img" aria-label="Serial routing: source through Grain, Delay and Reverb, then filter and output."><svg viewBox="0 0 680 258" aria-hidden="true"><text class="port" x="20" y="38">SOURCE</text><text class="port" x="660" y="224" text-anchor="end">FILTER → OUT</text><path class="wire" d="M48 52V117H94 M234 117H270 M410 117H446 M586 117H632V197"/><rect class="node grain-node" x="94" y="90" width="140" height="54" rx="5"/><text x="164" y="123" text-anchor="middle">GRAIN</text><rect class="node" x="270" y="90" width="140" height="54" rx="5"/><text x="340" y="123" text-anchor="middle">DELAY</text><rect class="node" x="446" y="90" width="140" height="54" rx="5"/><text x="516" y="123" text-anchor="middle">REVERB</text></svg></div>
+        <p id="route-description" class="route-description" aria-live="polite">Serial follows the visible tab order. Hold and drag the tabs in the app to change the order.</p>
+        <span class="diagram-label mono">INTERACTIVE ROUTING PREVIEW</span>
+      </div>
+    </div></section>
+    <section class="download-section" id="download" aria-labelledby="download-title"><div class="wrap download-layout">
+      <div><p class="eyebrow">03 / GET AGENT LOOPER</p><h2 id="download-title">Extract.<br>Run. Record.</h2><p class="download-intro">A portable Windows app.<br>No installer. Keep the folder together.</p><a class="button button-dark" href="https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip"><span>Download Windows 1.2.5</span><svg aria-hidden="true"><use href="#arrow-down"/></svg></a><p class="download-meta">Windows x64 <span>•</span> 6.3 MB ZIP <span>•</span> .NET Framework 4.7.2+</p><div class="download-links"><a href="https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/SHA256SUMS.txt">SHA-256 checksum ↗</a><a href="https://github.com/AveyCole/Agent-Looper/blob/main/RELEASE-NOTES.md">Release notes ↗</a><a href="https://github.com/AveyCole/Agent-Looper">Source code ↗</a></div></div>
+      <div class="start-guide"><h3>First session</h3><ol><li><span class="mono">01</span><p>Extract the complete ZIP. Keep the DLLs, tools and license files next to <strong>Agent-Looper.exe</strong>.</p></li><li><span class="mono">02</span><p>Run the app and open <strong>AUDIO</strong>. Select your input channel or stereo pair and an output. Changes apply automatically.</p></li><li><span class="mono">03</span><p>Press <strong>REC</strong> to start and finish a take. <strong>DUB</strong> adds another pass. <strong>PLAY</strong> stops or restarts the loop.</p></li><li><span class="mono">04</span><p>Open <strong>FX</strong> to shape the sound. Use <strong>MENU</strong> for timing, looper modes, import and export.</p></li></ol><details><summary>A few useful details <span aria-hidden="true">+</span></summary><div><p>New sessions start with one destructive looper. Enable the second looper in MENU → Layout.</p><p>The headphone button toggles app input monitoring. Keep hardware direct monitoring off when using app monitoring to avoid hearing both paths.</p><p>Import audio or extract audio from supported video formats, up to ten minutes. Export 48 kHz stereo 32-bit float WAV before closing; Windows does not save editable sessions.</p><p>ASIO drivers can be busy in another application. Close older copies of Agent Looper if your interface reports that it is in use.</p></div></details></div>
+    </div></section>
+    <section class="support wrap" aria-labelledby="support-title"><figure><img src="cheddar-yawn.jpg" width="600" height="1052" alt="Cheddar Butt, a gray and white cat, yawning among oak leaves" loading="lazy"><figcaption>Cheddar Butt</figcaption></figure><div><p class="eyebrow">INDEPENDENT SOFTWARE</p><h2 id="support-title">Support development.</h2><p>Agent Looper is free and open source. If you find it useful, you can support A.V.’s work.</p><a class="support-button" href="https://buymeacoffee.com/aveycole" target="_blank" rel="noopener noreferrer">Buy A.V. a coffee <svg aria-hidden="true"><use href="#arrow-up-right"/></svg><span class="sr"> (opens in a new tab)</span></a></div></section>
+  </main>
+  <footer class="wrap footer"><a class="footer-brand" href="#" aria-label="Agent Looper home"><img src="wordmark.svg" width="482" height="52" alt="Agent Looper"></a><span class="mono">WINDOWS / v1.2.5</span><div><a href="https://github.com/AveyCole/Agent-Looper">GitHub ↗</a><a href="https://github.com/AveyCole/Agent-Looper/blob/main/LICENSE.txt">GPL-2.0-or-later ↗</a></div></footer>
 </body>
 </html>
