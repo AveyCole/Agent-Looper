@@ -4,3 +4,11 @@ self-test.txt
 ui-preview.png
 *-MIDI.xml
 *.wav
+
+# Android distribution remains private
+*.apk
+*.aab
+*.jks
+*.keystore
+android/.toolchain/
+android/build/

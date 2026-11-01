@@ -29,11 +29,16 @@ sealed class MidiBinding {
 }
 sealed class MidiMap {
  public readonly Dictionary<string,MidiBinding> Bindings=new Dictionary<string,MidiBinding>();
- public string LearnTarget,DeviceName="";public Action<string> Trigger,Learned;
+ public string LearnTarget,DeviceName="";public Action<string> Trigger,Learned;public Action<string,int> Value;
+ public static bool Continuous(string action){return action!=null&&(action.StartsWith("FX.")||action.Contains(".Layer.")||action=="MASTER");}
  readonly HashSet<int> highCC=new HashSet<int>();readonly Dictionary<int,long> lastNote=new Dictionary<int,long>();
- public void Handle(int packed){int kind=packed&0xf0,channel=packed&15,number=(packed>>8)&127,value=(packed>>16)&127,key=(channel<<8)|number;if(kind==0xb0){bool previous=highCC.Contains(key);if(value>=64)highCC.Add(key);else highCC.Remove(key);if(value<64||previous)return;}else if(kind==0x90&&value>0){long now=DateTime.UtcNow.Ticks,previous;if(lastNote.TryGetValue(key,out previous)&&now-previous<TimeSpan.TicksPerMillisecond*35)return;lastNote[key]=now;}else return;
-  if(!string.IsNullOrEmpty(LearnTarget)){string action=LearnTarget;var duplicate=new List<string>();foreach(var map in Bindings)if(map.Value.Matches(kind,channel,number))duplicate.Add(map.Key);foreach(var old in duplicate)Bindings.Remove(old);Bindings[action]=new MidiBinding{Kind=kind,Channel=channel,Number=number};LearnTarget=null;if(Learned!=null)Learned(action);return;}
-  foreach(var map in Bindings)if(map.Value.Matches(kind,channel,number)){if(Trigger!=null)Trigger(map.Key);return;}
+ public void Handle(int packed){int kind=packed&0xf0,channel=packed&15,number=(packed>>8)&127,value=(packed>>16)&127,key=(channel<<8)|number;
+ if(kind!=0xb0&&kind!=0x90&&kind!=0x80)return;
+ bool controlLearn=Continuous(LearnTarget);if(controlLearn&&kind!=0xb0)return;
+ if(string.IsNullOrEmpty(LearnTarget)){foreach(var map in Bindings)if(map.Value.Matches(kind,channel,number)&&Continuous(map.Key)){if(kind==0xb0&&Value!=null)Value(map.Key,value);return;}}
+ if(!controlLearn){if(kind==0xb0){bool previous=highCC.Contains(key);if(value>=64)highCC.Add(key);else highCC.Remove(key);if(value<64||previous)return;}else if(kind==0x90&&value>0){long now=DateTime.UtcNow.Ticks,previous;if(lastNote.TryGetValue(key,out previous)&&now-previous<TimeSpan.TicksPerMillisecond*35)return;lastNote[key]=now;}else return;}
+ if(!string.IsNullOrEmpty(LearnTarget)){string action=LearnTarget;var duplicate=new List<string>();foreach(var map in Bindings)if(map.Value.Matches(kind,channel,number))duplicate.Add(map.Key);foreach(var old in duplicate)Bindings.Remove(old);Bindings[action]=new MidiBinding{Kind=kind,Channel=channel,Number=number};LearnTarget=null;if(Learned!=null)Learned(action);return;}
+ foreach(var map in Bindings)if(map.Value.Matches(kind,channel,number)){if(Trigger!=null)Trigger(map.Key);return;}
  }
  public void ResetEdges(){highCC.Clear();lastNote.Clear();}
  public void Save(string path){using(var writer=XmlWriter.Create(path,new XmlWriterSettings{Indent=true})){writer.WriteStartElement("StrataMidi");writer.WriteAttributeString("device",DeviceName??"");foreach(var map in Bindings){writer.WriteStartElement("Binding");writer.WriteAttributeString("action",map.Key);writer.WriteAttributeString("kind",map.Value.Kind.ToString());writer.WriteAttributeString("channel",map.Value.Channel.ToString());writer.WriteAttributeString("number",map.Value.Number.ToString());writer.WriteEndElement();}writer.WriteEndElement();}}

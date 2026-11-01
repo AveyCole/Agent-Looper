@@ -1,6 +1,6 @@
 # Agent Looper for Android
 
-Native Android touch version of Agent Looper. Android 8.0+; other-app audio capture requires Android 10+. This is the development APK (0.2.0), signed with a local development key, not a Play Store release.
+Native Android touch version of Agent Looper. Android 8.0+; other-app audio capture requires Android 10+. This directory is an older development source snapshot. No APK or app bundle is distributed here; Android distribution is being prepared separately.
 
 ## Inputs and monitoring
 
