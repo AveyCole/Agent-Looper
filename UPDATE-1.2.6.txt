@@ -1,0 +1,10 @@
+Agent Looper 1.2.6 — Branding and icon parity
+
+Primary tagline: It is happening again...
+Alternate line: That loop you like is going to come back in style
+
+Windows and Android display the primary tagline beneath the wordmark. Android portrait/landscape headers retain their existing controls and spacing. Windows now uses the same mint loop glyph and dark palette as Android for the executable, window and taskbar icon; the embedded icon contains 16, 20, 24, 32, 40, 48, 64, 128 and 256 pixel sizes.
+
+The website, README, signature artwork and user manual use the updated branding. The alternate line appears in the website's looper section. Audio processing is unchanged from 1.2.5.
+
+Windows UI checks and Android portrait/landscape controls passed. The website was checked at phone, tablet and desktop sizes. Android APK distribution remains local/private.

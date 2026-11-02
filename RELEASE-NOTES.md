@@ -1,4 +1,16 @@
-# Agent Looper 1.2.5 — Windows
+# Agent Looper 1.2.6 — Windows
+
+**It is happening again...**
+
+- The primary tagline appears beneath the app wordmark and across the website and documentation.
+- The alternate line, “That loop you like is going to come back in style”, appears in a secondary website section.
+- Windows now matches Android's mint loop icon and dark palette. The executable includes icon sizes from 16 to 256 pixels for Explorer, the taskbar and title bar.
+- Updated screenshot assets and browser favicon use the current branding.
+- Audio processing is unchanged from 1.2.5.
+
+Windows UI checks and Android portrait/landscape branding checks passed. The Windows build remains portable; extract the complete ZIP and run Agent-Looper.exe. No Android APK is distributed in this repository.
+
+## Previous: 1.2.5 — Windows
 
 - **Stronger CLOUDY:** a wider change from defined echoes/grains to a dense, diffuse cloud. Cloud Delay progressively replaces the clear echo with grains, and density changes across the full control range. Live changes are smoothed, including during Freeze. The grain voice limit is unchanged.
 - **Independent A/B Freeze:** hold different grain captures for the two loopers, or release either separately. Detailed effect parameters and routing remain shared; sends and filters remain independent.

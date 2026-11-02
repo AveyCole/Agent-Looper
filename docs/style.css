@@ -15,3 +15,10 @@
 /* Keep the instrument illustration inside narrow phone layouts. */
 .hero-copy,.instrument{min-width:0}
 @media(max-width:760px){.route-diagram text:not(.port){font-size:24px}.route-diagram .port{font-size:14px}}
+
+/* Canonical tagline: preserve the words on narrow displays. */
+.hero h1{font-size:clamp(68px,7.1vw,102px)}
+@media(min-width:1500px){.hero h1{font-size:108px}}
+@media(max-width:1000px){.hero h1{font-size:76px}}
+@media(max-width:760px){.hero h1{font-size:clamp(64px,13vw,92px)}}
+@media(max-width:390px){.hero h1{font-size:64px}}
