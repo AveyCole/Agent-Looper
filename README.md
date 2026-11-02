@@ -2,9 +2,9 @@
 
 **It is happening again...**
 
-Native Windows audio loop pedal.
+Native Windows and Apple Silicon Mac audio loop pedal.
 
-[Download Windows 1.2.7](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Portable ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
+[Download Windows 1.2.7](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.2.7 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.7-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
@@ -37,6 +37,16 @@ Run `powershell -ExecutionPolicy Bypass -File build.ps1 -OutputName Agent-Looper
 Windows uses pooled recording blocks to avoid growing-take copies on the audio callback, smooths destructive overdub splices at arbitrary loop positions, and lets silent FX sleep. Recording/playback gain tests remain at unity below overload. Freeze release smoothly splices frozen history into resumed input. Version 1.2.5 strengthens Clouds and Cloud Delay while removing sub-audible DC from the diffusion feedback path.
 
 Windows UI validation: `Agent-Looper.exe --session-ui-test`. Audio and rendering checks are included in the source; automated checks do not replace listening on your hardware.
+
+## Mac (Apple Silicon)
+
+[Download Mac 1.2.7](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.7-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.2.7-macos-arm64)
+
+Requires macOS 12 or later on Apple Silicon (M1 and newer). Extract the ZIP and open **Agent Looper.app**, then enable AUDIO and allow microphone access. The package contains the app, complete native source, dependency sources/licenses, validation results and an offline rebuild script.
+
+The Mac port follows Windows 1.2.7's interface and features: destructive/layered recording, timing and input triggers, A-to-B routing, independent R3 pitch/stretch, Warp, full master FX, independent sends/Freeze and MIDI Learn. Core Audio replaces Windows audio/ASIO. The Mac additionally retains editable `.agentloop` sessions. The older Android snapshot is not its parity reference.
+
+Regression checks and built-in microphone recording/WAV export passed on the M1 Mac. External MIDI controllers and multichannel interfaces were not physically tested. The app is locally signed, not Apple notarized. See the included README and VALIDATION.txt.
 
 ## Android
 

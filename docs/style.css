@@ -22,3 +22,6 @@
 @media(max-width:1000px){.hero h1{font-size:76px}}
 @media(max-width:760px){.hero h1{font-size:clamp(64px,13vw,92px)}}
 @media(max-width:390px){.hero h1{font-size:64px}}
+
+/* Platform downloads */
+.download-options{display:flex;flex-wrap:wrap;gap:20px 12px;align-items:flex-start}.download-options>div{min-width:0}.button-secondary{border:1px solid var(--mint);color:var(--mint)}.button-secondary:hover{background:#20392a;transform:translateY(-2px)}.mac-download{margin-top:30px;padding-top:24px;border-top:1px solid #bfc5b1}.mac-download h3{font-size:20px;font-weight:400;letter-spacing:-.03em;margin:0 0 14px}.mac-install{max-width:390px;font-size:12px;line-height:1.8;color:#43533b;margin:14px 0 0}

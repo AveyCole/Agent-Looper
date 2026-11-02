@@ -1,4 +1,18 @@
-# Agent Looper 1.2.7 — Windows
+# Agent Looper 1.2.7 — Mac (Apple Silicon)
+
+Native arm64 Mac port based on the supplied Windows 1.2.7 source. Requires macOS 12 or later on M1 and newer.
+
+- Windows-style single/dual interface, destructive/layered recording, timing, input triggers, auto overdub, undo/redo and A-to-B routing.
+- Independent Rubber Band R3 pitch/stretch, render modes, Warp and waveform region editing.
+- Full FX page with all reverb/delay/grain types, independent A/B sends, filters and Freeze, serial/parallel/split routing and MIDI Learn.
+- Core Audio hardware/channel selection, native HAL microphone capture, bundled offline media decoder and Float32 WAV export.
+- Mac sessions, complete corresponding source, dependency sources/licenses and rebuild script included in the ZIP.
+
+Validated by regression tests, UI checks and built-in microphone recording/export on the M1 Mac. External MIDI/interfaces and older macOS releases were not physically tested. Locally signed, not Apple notarized.
+
+[Mac download](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.7-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.2.7-macos-arm64)
+
+## Windows 1.2.7
 
 - Removed the tagline from the app interface. Taglines remain on the website and documentation.
 - Retained the Windows icon matching Android.
