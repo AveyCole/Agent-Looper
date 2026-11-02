@@ -21,8 +21,8 @@
   reducedMotion.addEventListener('change', syncMotionPreference);
 
   const screens = {
-    loops: {file: 'screenshot.png?v=1.2.6', width: 1224, height: 881, caption: 'Actual Windows interface · Dual mode with separate layers', alt: 'Actual Agent Looper Windows interface showing two loopers, separate layers, waveform handles and recording controls'},
-    effects: {file: 'effects.png?v=1.2.6', width: 1920, height: 1080, caption: 'Actual Windows interface · Dedicated effects page', alt: 'Actual Agent Looper Windows effects page showing A and B sends, effect routing, Freeze and granular controls'}
+    loops: {file: 'screenshot.png?v=1.2.7', width: 1224, height: 881, caption: 'Actual Windows interface · Dual mode with separate layers', alt: 'Actual Agent Looper Windows interface showing two loopers, separate layers, waveform handles and recording controls'},
+    effects: {file: 'effects.png?v=1.2.7', width: 1920, height: 1080, caption: 'Actual Windows interface · Dedicated effects page', alt: 'Actual Agent Looper Windows effects page showing A and B sends, effect routing, Freeze and granular controls'}
   };
   document.querySelectorAll('[data-screen]').forEach(button => button.addEventListener('click', () => {
     const selected = screens[button.dataset.screen];

@@ -1,0 +1,5 @@
+Agent Looper 1.2.7 — Clean app headers
+
+Removed the tagline from both app interfaces and restored Android's previous logo sizes. Taglines are for the website, documentation and promotional material only. The matching Windows/Android loop icon is retained. Audio processing and features are unchanged.
+
+Windows UI checks and Android interface checks passed. Android APK distribution remains local/private.

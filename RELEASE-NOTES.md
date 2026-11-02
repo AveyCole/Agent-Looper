@@ -1,4 +1,12 @@
-# Agent Looper 1.2.6 — Windows
+# Agent Looper 1.2.7 — Windows
+
+- Removed the tagline from the app interface. Taglines remain on the website and documentation.
+- Retained the Windows icon matching Android.
+- Audio processing and features are unchanged.
+
+Windows UI checks and Android interface checks passed. No APK is published in this repository.
+
+## Previous: 1.2.6 — Windows
 
 **It is happening again...**
 
