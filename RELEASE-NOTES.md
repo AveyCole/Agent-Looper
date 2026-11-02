@@ -1,4 +1,18 @@
-# Agent Looper 1.2.7 — Mac (Apple Silicon)
+# Agent Looper 1.2.8 — Mac resampling
+
+- Both banks can capture the other bank before or after effects.
+- Self post-FX resampling captures a bank’s own processed loop as an overdub; A+B post-FX captures the combined internal mix.
+- Every internal source has a Live + variant. Separate live/internal layers in Layers mode, summed in Destructive.
+- Internal-only recording needs no selected hardware input. Input trigger follows the chosen source; click/monitoring are excluded. Source selections persist in Mac sessions.
+- Tested against independently rendered post-FX stereo samples for both banks and all new sources, including phase, destructive summing/Undo and isolation. Existing regressions and GUI source-menu checks passed.
+
+**B records A with effects:** B ⋯ → Input → Looper A · post-FX. **A resamples itself:** A ⋯ → Input → Self · post-FX (resample), then DUB. Captured effects are baked in; destination effects still process playback. Repeated automatic resampling overdubs can increase level.
+
+[Mac 1.2.8 download](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.8-macos-arm64/Agent-Looper-M1-Mac.zip) · [Release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.2.8-macos-arm64)
+
+Windows remains at 1.2.7. Requires macOS 12+ on Apple Silicon. Locally signed; not Apple notarized. Complete corresponding source, dependency sources/licenses and rebuild script are in the ZIP.
+
+## Previous Mac 1.2.7
 
 Native arm64 Mac port based on the supplied Windows 1.2.7 source. Requires macOS 12 or later on M1 and newer.
 

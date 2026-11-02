@@ -1,10 +1,12 @@
-# Agent Looper 1.2.7
+# Agent Looper
+
+Windows 1.2.7 · Mac 1.2.8
 
 **It is happening again...**
 
 Native Windows and Apple Silicon Mac audio loop pedal.
 
-[Download Windows 1.2.7](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.2.7 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.7-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
+[Download Windows 1.2.7](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.2.8 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.8-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
@@ -40,13 +42,19 @@ Windows UI validation: `Agent-Looper.exe --session-ui-test`. Audio and rendering
 
 ## Mac (Apple Silicon)
 
-[Download Mac 1.2.7](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.7-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.2.7-macos-arm64)
+[Download Mac 1.2.8](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.8-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.2.8-macos-arm64)
 
 Requires macOS 12 or later on Apple Silicon (M1 and newer). Extract the ZIP and open **Agent Looper.app**, then enable AUDIO and allow microphone access. The package contains the app, complete native source, dependency sources/licenses, validation results and an offline rebuild script.
 
 The Mac port follows Windows 1.2.7's interface and features: destructive/layered recording, timing and input triggers, A-to-B routing, independent R3 pitch/stretch, Warp, full master FX, independent sends/Freeze and MIDI Learn. Core Audio replaces Windows audio/ASIO. The Mac additionally retains editable `.agentloop` sessions. The older Android snapshot is not its parity reference.
 
 Regression checks and built-in microphone recording/WAV export passed on the M1 Mac. External MIDI controllers and multichannel interfaces were not physically tested. The app is locally signed, not Apple notarized. See the included README and VALIDATION.txt.
+
+### Mac 1.2.8: internal resampling
+
+Both banks now offer the other bank pre/post-FX, Self post-FX, and A+B post-FX as recording sources, each with a Live + variant. In B’s ⋯ → Input menu choose **Looper A · post-FX** to capture A’s effects. In A choose **Self · post-FX (resample)**, then DUB to capture A as an overdub. Other-bank sources require Dual mode. Internal-only capture works without selected hardware inputs and excludes click/monitoring. Source choices persist in sessions.
+
+FX are baked into captured audio; destination FX still apply during playback. Use Layers to keep the pass separately and mute the original if desired; Destructive adds it to the existing loop. Completed passes join playback at the pass boundary, with no instantaneous feedback path. Repeated automatic resampling overdubs can increase level.
 
 ## Android
 
