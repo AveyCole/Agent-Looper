@@ -1,12 +1,12 @@
 # Agent Looper
 
-Windows 1.8.0 · Mac 1.7.2
+Windows 1.8.0 · Mac 1.8.0
 
 **It is happening again...**
 
 Native Windows and Apple Silicon Mac audio loop pedal.
 
-[Download Windows 1.8.0](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.7.2 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.7.2-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
+[Download Windows 1.8.0](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.8.0 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.8.0-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
@@ -38,13 +38,15 @@ Click **LFO** in the centered bottom transport to open four numbered waveform sq
 
 **AUTO REC / FINISH** records effect and layer controls. Start/Finish lets the take define its own length; linked and fixed lengths remain available. MENU → Performance includes automation lanes and scenes. MIDI clock can follow external gear or send clock. See [Quick start](QUICK-START.md) and [release notes](RELEASE-NOTES.md).
 
-## External VST3 effects (Windows 1.8.0)
+## External plugin effects (Windows and Mac 1.8.0)
 
-Right-click an FX tab → **Replace with VST3…**. The menu searches the system Common Files/VST3 folder and the per-user LocalAppData/Programs/Common/VST3 folder whenever opened. Browse selects files or bundles elsewhere. Discovery lists files; plugins are validated when selected. There is no full scan manager yet.
+Right-click an FX tab → **Replace with VST3…**. Windows searches system Common Files/VST3 and per-user LocalAppData/Programs/Common/VST3; Mac searches /Library/Audio/Plug-Ins/VST3 and ~/Library/Audio/Plug-Ins/VST3 whenever opened. Browse selects files or bundles elsewhere. Discovery lists files; plugins are validated when selected. There is no full scan manager yet.
 
 The plugin editor appears inside the FX panel, fitting the available space when the plugin supports resizing/scaling. **POP OUT** opens a separate editor window. Slot levels become wet/dry mix, with their MIDI/LFO/automation support retained. Replacements apply to the selected A/B send bank; plugin instances and settings are separate for each bank.
 
-Projects save plugin paths, bypass and parameter state, and require the plugins to remain installed. Newly saved Windows 1.8.0 projects require its updated reader; Mac 1.7.2 cannot yet open them. Earlier Windows projects remain readable.
+Projects save plugin paths, bypass and parameter state, and require the plugins to remain installed. Newly saved Windows 1.8.0 projects require its updated reader; Mac 1.8.0 reads these projects, including plugin state. Earlier Windows projects remain readable.
+
+Mac also hosts Audio Unit effects via the macOS registry. AUv2 native editors embed; AUv3 defaults to editable parameter controls because Koala FX’s remote custom editor was blank on this Mac. Custom AUv3 remote views remain experimental. Plugins need Mac Apple Silicon/Universal builds and are installed separately. Offline export uses independent plugin instances.
 
 This first preview hosts stereo VST3 audio effects inside the app process. It has no crash sandbox, plugin instruments, sidechain input, plugin MIDI routing or host automation of external plugin parameters. The rack adds 64 samples plus plugin latency; wet/dry and parallel branches within a rack are aligned, while separate A/B banks are not delay-compensated against each other. See [release notes](RELEASE-NOTES.md).
 
@@ -58,11 +60,11 @@ Windows UI validation: `Agent-Looper.exe --session-ui-test`. Audio and rendering
 
 ## Mac (Apple Silicon)
 
-[Download Mac 1.7.2](https://github.com/AveyCole/Agent-Looper/releases/download/v1.7.2-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.7.2-macos-arm64)
+[Download Mac 1.8.0](https://github.com/AveyCole/Agent-Looper/releases/download/v1.8.0-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.8.0-macos-arm64)
 
 Requires macOS 12 or later on Apple Silicon (M1 and newer). Extract the ZIP and open **Agent Looper.app**, then enable AUDIO and allow microphone access. The package contains the app, complete native source, dependency sources/licenses, validation results and an offline rebuild script.
 
-The Mac port follows published Windows 1.7.2: four multi-target LFOs, recorded automation, eight scenes, editable Windows-compatible `.agw` projects, MIDI clock, overdub feedback, expanded FX, destructive/layered recording, internal resampling, independent R3 pitch/stretch, Warp and MIDI Learn. Core Audio replaces Windows audio/ASIO. Older Mac `.agentloop` sessions still open.
+The Mac port follows published Windows 1.8.0, including VST3 effect hosting, and adds Audio Unit effects. It retains four multi-target LFOs, recorded automation, eight scenes, editable Windows-compatible `.agw` projects, MIDI clock, overdub feedback, expanded FX, destructive/layered recording, internal resampling, independent R3 pitch/stretch, Warp and MIDI Learn. Core Audio replaces Windows audio/ASIO. Older Mac `.agentloop` sessions still open.
 
 Regression checks and built-in microphone recording/WAV export passed on the M1 Mac. External MIDI controllers and multichannel interfaces were not physically tested. The app is locally signed, not Apple notarized. See the included README and VALIDATION.txt.
 
@@ -86,8 +88,8 @@ The existing `android/` directory is an older development source snapshot. Andro
 
 GPL version 2 or later, consistent with the linked Rubber Band library; see `LICENSE.txt`. Third-party components retain their licenses, including NAudio, Microsoft runtime components, Rubber Band, FFTW and the POTS delay adaptation. All bundled notices are retained.
 
-### Mac 1.7.2: current Windows parity
+### Mac 1.8.0: plugin hosting and performance controls
 
 AUTO REC / AUTO and the four-source waveform picker mirror the Windows performance workflow. Drag LFO tiles onto knobs, or use TARGETS; double-click a tile for labelled Depth, Rate and Phase sliders. Scene recall can run now or at the next A-loop boundary with a 20 ms transition. Save/Load `.agw` projects, with Save/Discard/Cancel protection. PS1 SPU, Bloom, Tuned, Crystal and Tape Echo controls are included. Bank menus expose overdub feedback; MIDI settings expose clock Follow/Send and output selection.
 
-Native/Swift regression tests, Windows project byte round-trips, MIDI clock scheduler tests and Mac UI automation/save checks passed. Physical external MIDI and multichannel interfaces remain untested. Full source, dependency sources/licenses and offline rebuild script are in the ZIP.
+Native/Swift regressions, plugin routing/latency tests, Windows project byte round-trips, and real VST3/AUv2/AUv3 audio/state/export checks passed. GUI tests covered AUv3 parameter save/restore and VST3 pop-out/reattachment. Physical external MIDI and multichannel interfaces remain untested. Full source, dependency sources/licenses and offline rebuild script are in the ZIP.

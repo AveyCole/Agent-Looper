@@ -1,3 +1,23 @@
+# Agent Looper 1.8.0 — Apple Silicon Mac · VST3 + Audio Units
+
+Adds Windows 1.8.0 VST3 effect hosting to the native Apple Silicon Mac app, plus Audio Unit effects (AUv2/AUv3).
+
+- Independent three-slot replacements for A/B, wet/dry sends, bypass, reload and restore built-ins.
+- Embedded VST3/AUv2 editors, pop-out and reattachment.
+- AUv3 defaults to editable parameter controls. Koala FX's remote custom editor is blank on this Mac; custom AUv3 remote views remain experimental.
+- Plugin state in projects/scenes, missing-plugin dry fallback, rack latency alignment, and independent offline WAV export.
+- All existing looping, internal resampling, automation, LFOs and MIDI clock retained.
+
+Tested real ValhallaSupermassive VST3/AUv2 and Koala FX AUv3 audio/state/export, actual GUI-edited AUv3 save/restore, editor pop-out/reattachment, native routing/latency and existing regressions. Full details in VALIDATION.txt.
+
+Effects are installed separately and must be Mac Apple Silicon/Universal builds. This hosts effects inside the standalone app; Agent Looper itself is not a DAW plugin. No instruments, sidechains, plugin MIDI input or third-party parameter automation. VST3 runs without crash isolation. Reload after bus/latency changes; no cross-bank latency compensation.
+
+Extract the complete ZIP and open Agent Looper.app. Apple Silicon, macOS 12+. Locally ad-hoc signed; not Apple notarized. Complete source, dependency sources/licenses and offline build script included. Older projects load; newly saved .agw projects require the 1.8 reader.
+
+Windows reference: 8e4f8a627b14de890edf3a301a220dc5185cf679.
+
+[Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.8.0-macos-arm64).
+
 # Agent Looper 1.8.0 — Windows VST3 preview
 
 - Right-click an FX tab → **Replace with VST3…**. The menu searches the standard system and per-user VST3 folders whenever opened. Browse accepts plugin files and bundle folders outside those locations. This is directory discovery, without an exhaustive plugin-validation scan or custom-folder manager.
@@ -8,7 +28,7 @@
 
 First-preview limits: plugins run in the app process, with no crash sandbox. Instruments, sidechains, plugin MIDI input and host automation of external plugin parameters are not included. Plugin latency or bus changes require Reload plugin. Multi-effect bundles use the first effect class.
 
-Extract the complete ZIP and retain **AgentVst3.dll**. Windows 1.8.0 reads older Windows projects; newly saved projects require the updated reader and cannot yet be opened by Mac 1.7.2. Mac remains at 1.7.2. No Android binaries, signing material or third-party effect plugins are included.
+Extract the complete ZIP and retain **AgentVst3.dll**. Windows 1.8.0 reads older Windows projects; newly saved projects require the updated reader, available in Mac 1.8.0. No Android binaries, signing material or third-party effect plugins are included.
 
 Validation passed for real TAL-Reverb-2, TAL-Chorus-LX and ValhallaSupermassive audio; editor attachment/resizing/tab switching/popout/reattachment; project/save/dirty/missing-plugin handling; deterministic latency checks for all routing modes; a simulated silent three-plugin soak; existing audio/UI checks; managed and native source rebuilds. Physical-interface listening was not repeated.
 
