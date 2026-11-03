@@ -1,4 +1,16 @@
-# Agent Looper 1.2.8 — Mac resampling
+# Agent Looper 1.2.12 — Windows
+
+- **Truncate to selection:** directly in EDIT. Keeps the selected float audio and existing pitch, stretch, reverse, filter, level and pan settings. Undo/Redo restores/reapplies the crop.
+- **Return to start:** new MIDI-assignable button beside the headphones, plus one for B. Stopped remains stopped; playing continues from the beginning. Corrects stale bank-origin alignment after an overdub or layer replacement.
+- **Internal resampling parity with Mac 1.2.8:** either bank can record the other pre/post-FX, itself post-FX, or A+B post-FX, with a Live + variant for each. Internal-only capture requires no hardware input. Live/internal layers stay separate in Layers mode and sum in Destructive. Click and monitoring are excluded.
+
+Use looper ⋯ → Input to select the recording source. Self post-FX + DUB bakes the current processing into a pass. Destination FX still process playback; reduce its sends to avoid processing the captured effects again. Repeated resampling overdubs can increase level.
+
+Validation: source/FX sample comparisons for both banks and all new modes; destructive summing; input-trigger and monitor/click isolation; automatic passes; sample-accurate quantized routing; selected-region truncate samples/settings/Undo/Redo; restart alignment and UI checks passed. External hardware listening was not repeated. Windows still exports WAV rather than editable project files.
+
+Extract the complete portable ZIP and run Agent-Looper.exe. Requires Windows x64 and .NET Framework 4.7.2+. Mac remains at 1.2.8. No APK, Android app bundle or signing key is published.
+
+## Mac 1.2.8 — resampling
 
 - Both banks can capture the other bank before or after effects.
 - Self post-FX resampling captures a bank’s own processed loop as an overdub; A+B post-FX captures the combined internal mix.

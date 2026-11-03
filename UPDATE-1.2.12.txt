@@ -1,0 +1,9 @@
+Agent Looper 1.2.12 — Selected-region restart and Truncate
+
+Return to start now aligns an unwarped bank to the current first layer's playback origin, rather than an older bank origin left by an overdub, layer replacement or deletion. The bank's quantization anchor follows that origin. Warp retains its common origin. Android's waveform cursor uses the actual source-position math, including repitch, stretch, reverse and Warp. Stopped playback lands at the selected logical Start grip; ongoing playback proceeds from there.
+
+EDIT → Truncate to selection keeps only the audio between the waveform handles. The new clip occupies its full waveform display. Sample values, pitch, stretch, reverse, filter, level, pan and timeline offset are retained. Undo restores the discarded audio; Redo reapplies the crop. Finish an active recording before truncating. Android prepares the new audio/envelope outside the engine lock and validates the selection before committing.
+
+Validation: stale bank-origin resets land exactly on forward/reverse selected-region starts; Windows and Android restart checks passed. Cropped samples are exact. Android running pitch/stretch/filter audio matches the uncropped reference with zero sample error. Truncate Undo/Redo restores source and region. Actual Android Edit-menu and return-button workflow passed. Existing handle-smoothing and destructive-trim checks passed. Signed APK verified. Physical hardware listening was not repeated.
+
+Includes earlier internal resampling, return-to-start MIDI controls and Android adaptive output buffering. APK remains private/local. Windows editable session support is unchanged (WAV export).
