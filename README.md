@@ -1,12 +1,12 @@
 # Agent Looper
 
-Windows 1.7.2 · Mac 1.2.12
+Windows 1.7.2 · Mac 1.7.2
 
 **It is happening again...**
 
 Native Windows and Apple Silicon Mac audio loop pedal.
 
-[Download Windows 1.7.2](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.2.12 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.12-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
+[Download Windows 1.7.2](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.7.2 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.7.2-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
@@ -48,15 +48,15 @@ Windows UI validation: `Agent-Looper.exe --session-ui-test`. Audio and rendering
 
 ## Mac (Apple Silicon)
 
-[Download Mac 1.2.12](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.12-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.2.12-macos-arm64)
+[Download Mac 1.7.2](https://github.com/AveyCole/Agent-Looper/releases/download/v1.7.2-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.7.2-macos-arm64)
 
 Requires macOS 12 or later on Apple Silicon (M1 and newer). Extract the ZIP and open **Agent Looper.app**, then enable AUDIO and allow microphone access. The package contains the app, complete native source, dependency sources/licenses, validation results and an offline rebuild script.
 
-The Mac port follows Windows 1.2.7's interface and features: destructive/layered recording, timing and input triggers, A-to-B routing, independent R3 pitch/stretch, Warp, full master FX, independent sends/Freeze and MIDI Learn. Core Audio replaces Windows audio/ASIO. The Mac additionally retains editable `.agentloop` sessions. The older Android snapshot is not its parity reference.
+The Mac port follows published Windows 1.7.2: four multi-target LFOs, recorded automation, eight scenes, editable Windows-compatible `.agw` projects, MIDI clock, overdub feedback, expanded FX, destructive/layered recording, internal resampling, independent R3 pitch/stretch, Warp and MIDI Learn. Core Audio replaces Windows audio/ASIO. Older Mac `.agentloop` sessions still open.
 
 Regression checks and built-in microphone recording/WAV export passed on the M1 Mac. External MIDI controllers and multichannel interfaces were not physically tested. The app is locally signed, not Apple notarized. See the included README and VALIDATION.txt.
 
-### Mac 1.2.12: published Windows parity
+### Previous Mac 1.2.12 update
 
 Matches the published Windows 1.2.12 update. **EDIT → Truncate to selection** keeps the selected float audio and existing processing settings, with Undo/Redo. Both banks have a **Return to start** icon beside the clock, preserving Play/Stop and correcting stale origins; right-click for MIDI Learn (A.Restart / B.Restart). Other-bank sources are disabled in Single mode. With no selected hardware inputs, internal playback/resampling can start without requesting unused microphone access.
 
@@ -75,3 +75,9 @@ The existing `android/` directory is an older development source snapshot. Andro
 ## License
 
 GPL version 2 or later, consistent with the linked Rubber Band library; see `LICENSE.txt`. Third-party components retain their licenses, including NAudio, Microsoft runtime components, Rubber Band, FFTW and the POTS delay adaptation. All bundled notices are retained.
+
+### Mac 1.7.2: current Windows parity
+
+AUTO REC / AUTO and the four-source waveform picker mirror the Windows performance workflow. Drag LFO tiles onto knobs, or use TARGETS; double-click a tile for labelled Depth, Rate and Phase sliders. Scene recall can run now or at the next A-loop boundary with a 20 ms transition. Save/Load `.agw` projects, with Save/Discard/Cancel protection. PS1 SPU, Bloom, Tuned, Crystal and Tape Echo controls are included. Bank menus expose overdub feedback; MIDI settings expose clock Follow/Send and output selection.
+
+Native/Swift regression tests, Windows project byte round-trips, MIDI clock scheduler tests and Mac UI automation/save checks passed. Physical external MIDI and multichannel interfaces remain untested. Full source, dependency sources/licenses and offline rebuild script are in the ZIP.

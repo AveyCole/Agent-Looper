@@ -1,3 +1,18 @@
+# Agent Looper 1.7.2 — Apple Silicon Mac
+
+- Four multi-target LFOs with waveform picker, drag-to-knob linking, source/wave/polarity/timing controls and labelled Depth, Rate and Phase sliders.
+- Recorded knob automation: free Start/Finish, Follow A/B, beats or seconds; per-lane controls and playback toggle.
+- Eight named scenes, immediate or next-A-loop recall with a 20 ms transition.
+- Windows-compatible editable `.agw` projects; New/Save/Save as/Load and Save/Discard/Cancel protection. Older Mac sessions still open.
+- MIDI clock Follow/Send, 24 ppqn, Start/Continue/Stop and output selection; automation MIDI Learn.
+- Overdub feedback with per-pass layer decay, partial destructive capture, Undo and export support.
+- PS1 SPU, Bloom, Tuned resonator, Crystal delay, Tape Echo, and expanded grain controls.
+- Existing two-bank pre/post-FX, self and mix resampling retained.
+
+Reference: shipped Windows 1.7.2 ZIP at a90d6eeb87bf2833033527fd09e40b27f5cc9a12; checksum and bundled version verified. Native/Swift regressions, `.agw` byte round-trips, MIDI clock scheduler and Mac UI recording/settings/save checks passed. Physical external MIDI/controllers and multichannel interfaces remain untested.
+
+[Mac 1.7.2 release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.7.2-macos-arm64). Requires Apple Silicon and macOS 12+. Full source, dependency sources/licenses, validation and offline rebuild script included. Locally signed, not Apple notarized.
+
 # Agent Looper 1.7.2 — Windows
 
 - Rounded LFO picker: click **LFO** for four waveform squares. Drag a source onto knobs; each LFO can control multiple destinations. Double-click a numbered square for labelled Depth, Rate and Phase sliders, with visible values. Waveforms include Sine, Triangle, Square, Saw, Sample & hold and Input envelope; polarity and tempo/free timing are adjustable. TARGETS… adds/removes individual assignments.
@@ -5,7 +20,7 @@
 - Editable Windows projects, scenes and saved modulation/automation. Earlier projects load; newly saved projects need this updated version.
 - Expanded effects: PS1 reverb modes, Crystal Delay, Tape Echo, Bloom and Tuned, plus additional granular/cloud controls.
 
-Extract the complete portable ZIP and run Agent-Looper.exe. Windows x64 and .NET Framework 4.7.2+. Mac remains at 1.2.12. No Android binaries or signing material are included.
+Extract the complete portable ZIP and run Agent-Looper.exe. Windows x64 and .NET Framework 4.7.2+. Mac 1.7.2 is available separately below. No Android binaries or signing material are included.
 
 Validation: multi-destination DSP and save/load, baseline restoration and unlinking; picker/settings/slider and actual knob drop handlers; performance/UI regression checks; stopped-audio/realtime stability checks. Packaged Windows source rebuild and ZIP integrity passed. Physical-device listening was not repeated.
 
