@@ -1,4 +1,4 @@
-# Agent Looper 1.7.2 (Windows)
+# Agent Looper 1.8.0 (Windows)
 
 It is happening again...
 
@@ -50,7 +50,7 @@ Save and Save As include loops, layers, FX, feedback, automation, modulators and
 
 ## Running
 
-Windows: extract the whole ZIP, then run Agent-Looper.exe. Keep the DLLs and tools folder beside it. F11 toggles immersive fullscreen; Escape leaves fullscreen. Windows source is in source/. Run source/build.ps1 to rebuild beside the runtime DLLs as Agent-Looper-Rebuilt.exe. Android: install the signed APK as an update to your current app. Windows version 1.7.2. Android remains 1.6.1 / code 53.
+Windows: extract the whole ZIP, then run Agent-Looper.exe. Keep the DLLs and tools folder beside it. F11 toggles immersive fullscreen; Escape leaves fullscreen. Windows source is in source/. Run source/build.ps1 to rebuild beside the runtime DLLs as Agent-Looper-Rebuilt.exe. Android: install the signed APK as an update to your current app. Windows version 1.8.0. Android remains 1.6.1 / code 53.
 
 These builds are local/private. No APK was published to GitHub. macOS is unchanged.
 
@@ -65,3 +65,22 @@ Android: Destinations lists assignments; tap one to remove it.
 Disable restores all target baselines; Unlink removes all assignments. Settings and destinations save with projects. Older projects load; projects saved by this update require the updated app.
 
 Windows: extract the entire ZIP and run Agent-Looper.exe. Android APK remains private. Nothing published.
+
+
+## External VST3 effects
+
+Right-click an FX tab and choose Replace with VST3… . Select an installed 64-bit stereo effect. Browse supports both .vst3 files and bundle folders.
+
+The plugin editor opens directly inside the FX controls area. Resizable/scalable editors fit the available space where the plugin supports it; POP OUT remains available for larger fixed-size editors. Double-clicking an external-effect tab also pops out its editor. Return to the built-in effect from the tab's right-click menu.
+
+The slot level becomes wet/dry mix and retains its MIDI/LFO/automation assignment. Native plugin parameters are edited in the plugin UI; direct host automation/LFO assignment of those external parameters is not yet supported. BYPASS retains latency alignment.
+
+Replacements apply to the selected A SENDS or B SENDS bank, with separate plugin instances. Existing built-in detailed settings and serial order remain shared. Projects and scenes store plugin paths, bypass and parameter state. Plugins must remain installed; their binaries and effect tails are not embedded in the project. Missing plugins retain their saved state and pass dry audio with an error shown.
+
+This preview hosts plugins inside the app process; a plugin crash can close the app. There is no plugin crash sandbox. Stereo effects only: instruments, sidechains and plugin MIDI input are not included. Multi-effect bundles currently use the first effect class. Changes to plugin latency or bus layout require Reload plugin from the menu.
+
+The rack adds 64 samples (about 1.33 ms), plus reported plugin latency. Wet/dry and parallel branches within a rack are aligned. Separate A/B banks are not automatically delay-compensated against each other.
+
+Extract the ENTIRE ZIP and run Agent-Looper.exe. Keep AgentVst3.dll, other DLLs, tools and licenses together. New projects saved by this version require this update; earlier Windows projects remain readable.
+
+Validated with TAL-Reverb-2, TAL-Chorus-LX and ValhallaSupermassive; editor attachment/resizing/tab switches/popout/reattachment; latency fixtures for all routing modes; project/save/dirty/missing-plugin checks; 60 seconds of simulated silent three-plugin processing; existing performance/session/audio checks. Physical interface listening has not been repeated. Android and Mac are unchanged. Nothing published.

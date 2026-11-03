@@ -1,3 +1,17 @@
+# Agent Looper 1.8.0 — Windows VST3 preview
+
+- Right-click an FX tab → **Replace with VST3…**. The menu searches the standard system and per-user VST3 folders whenever opened. Browse accepts plugin files and bundle folders outside those locations. This is directory discovery, without an exhaustive plugin-validation scan or custom-folder manager.
+- Plugin editors appear directly in the FX controls area. Supported editors resize/scale to fit; **POP OUT** remains available for fixed or oversized editors.
+- Each bank has its own plugin replacements. Slot levels act as wet/dry mix and retain existing MIDI, LFO and automation assignments. Bypass, replacement and restoration of built-in effects are available in the tab menu.
+- Plugin paths and parameter state save with Windows projects and scenes. Missing plugins retain their state and pass dry audio. Plugins must be installed separately.
+- Stereo float32 VST3 effects at 48 kHz, with a 64-sample rack buffer. Wet/dry and parallel branches are latency-aligned within a rack. Separate A/B banks are not automatically delay-compensated against each other.
+
+First-preview limits: plugins run in the app process, with no crash sandbox. Instruments, sidechains, plugin MIDI input and host automation of external plugin parameters are not included. Plugin latency or bus changes require Reload plugin. Multi-effect bundles use the first effect class.
+
+Extract the complete ZIP and retain **AgentVst3.dll**. Windows 1.8.0 reads older Windows projects; newly saved projects require the updated reader and cannot yet be opened by Mac 1.7.2. Mac remains at 1.7.2. No Android binaries, signing material or third-party effect plugins are included.
+
+Validation passed for real TAL-Reverb-2, TAL-Chorus-LX and ValhallaSupermassive audio; editor attachment/resizing/tab switching/popout/reattachment; project/save/dirty/missing-plugin handling; deterministic latency checks for all routing modes; a simulated silent three-plugin soak; existing audio/UI checks; managed and native source rebuilds. Physical-interface listening was not repeated.
+
 # Agent Looper 1.7.2 — Apple Silicon Mac
 
 - Four multi-target LFOs with waveform picker, drag-to-knob linking, source/wave/polarity/timing controls and labelled Depth, Rate and Phase sliders.

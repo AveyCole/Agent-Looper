@@ -30,7 +30,7 @@ partial class Pedal {
    }finally{ResumeLayout(true);}
   }
  }
- protected override bool ProcessCmdKey(ref Message message,Keys keyData){
+ protected override bool ProcessCmdKey(ref Message message,Keys keyData){if(keyData!=Keys.F11&&VstInstance.PluginKeyboardFocus())return base.ProcessCmdKey(ref message,keyData);
   if(keyData==Keys.F11){if(currentPopup!=null)currentPopup.Close();SetImmersive(!immersive);return true;}
   if(keyData==Keys.Escape&&immersive){if(currentPopup!=null)currentPopup.Close();SetImmersive(false);return true;}
   return base.ProcessCmdKey(ref message,keyData);

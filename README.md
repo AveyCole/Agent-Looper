@@ -1,12 +1,12 @@
 # Agent Looper
 
-Windows 1.7.2 · Mac 1.7.2
+Windows 1.8.0 · Mac 1.7.2
 
 **It is happening again...**
 
 Native Windows and Apple Silicon Mac audio loop pedal.
 
-[Download Windows 1.7.2](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.7.2 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.7.2-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
+[Download Windows 1.8.0](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.7.2 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.7.2-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
@@ -38,9 +38,19 @@ Click **LFO** in the centered bottom transport to open four numbered waveform sq
 
 **AUTO REC / FINISH** records effect and layer controls. Start/Finish lets the take define its own length; linked and fixed lengths remain available. MENU → Performance includes automation lanes and scenes. MIDI clock can follow external gear or send clock. See [Quick start](QUICK-START.md) and [release notes](RELEASE-NOTES.md).
 
+## External VST3 effects (Windows 1.8.0)
+
+Right-click an FX tab → **Replace with VST3…**. The menu searches the system Common Files/VST3 folder and the per-user LocalAppData/Programs/Common/VST3 folder whenever opened. Browse selects files or bundles elsewhere. Discovery lists files; plugins are validated when selected. There is no full scan manager yet.
+
+The plugin editor appears inside the FX panel, fitting the available space when the plugin supports resizing/scaling. **POP OUT** opens a separate editor window. Slot levels become wet/dry mix, with their MIDI/LFO/automation support retained. Replacements apply to the selected A/B send bank; plugin instances and settings are separate for each bank.
+
+Projects save plugin paths, bypass and parameter state, and require the plugins to remain installed. Newly saved Windows 1.8.0 projects require its updated reader; Mac 1.7.2 cannot yet open them. Earlier Windows projects remain readable.
+
+This first preview hosts stereo VST3 audio effects inside the app process. It has no crash sandbox, plugin instruments, sidechain input, plugin MIDI routing or host automation of external plugin parameters. The rack adds 64 samples plus plugin latency; wet/dry and parallel branches within a rack are aligned, while separate A/B banks are not delay-compensated against each other. See [release notes](RELEASE-NOTES.md).
+
 ## Build
 
-Run `powershell -ExecutionPolicy Bypass -File build.ps1 -OutputName Agent-Looper.exe` from the repository root. The ZIP also includes the application source. Keep the native libraries and tools available when running a build. See the bundled license notices and `licenses/native/PROVENANCE.txt` for native dependencies.
+Run `powershell -ExecutionPolicy Bypass -File build.ps1 -OutputName Agent-Looper.exe` from the repository root. The ZIP also includes the application source and native bridge source/SDK notices. Rebuild the bridge separately with native-vst3/build.ps1; see its README. Keep the native libraries and tools available when running a build. See the bundled license notices and `licenses/native/PROVENANCE.txt` for native dependencies.
 
 Windows uses pooled recording blocks to avoid growing-take copies on the audio callback, smooths destructive overdub splices at arbitrary loop positions, and lets silent FX sleep. Recording/playback gain tests remain at unity below overload. Freeze release smoothly splices frozen history into resumed input. Version 1.2.5 strengthens Clouds and Cloud Delay while removing sub-audible DC from the diffusion feedback path.
 
