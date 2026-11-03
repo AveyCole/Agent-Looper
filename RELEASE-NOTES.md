@@ -1,3 +1,14 @@
+# Agent Looper 1.7.2 — Windows
+
+- Rounded LFO picker: click **LFO** for four waveform squares. Drag a source onto knobs; each LFO can control multiple destinations. Double-click a numbered square for labelled Depth, Rate and Phase sliders, with visible values. Waveforms include Sine, Triangle, Square, Saw, Sample & hold and Input envelope; polarity and tempo/free timing are adjustable. TARGETS… adds/removes individual assignments.
+- Record automation for effect and layer controls from the centered bottom transport. Free Start/Finish recording sets its length; follow A/B, beat and second lengths are also available. MIDI clock can follow or send.
+- Editable Windows projects, scenes and saved modulation/automation. Earlier projects load; newly saved projects need this updated version.
+- Expanded effects: PS1 reverb modes, Crystal Delay, Tape Echo, Bloom and Tuned, plus additional granular/cloud controls.
+
+Extract the complete portable ZIP and run Agent-Looper.exe. Windows x64 and .NET Framework 4.7.2+. Mac remains at 1.2.12. No Android binaries or signing material are included.
+
+Validation: multi-destination DSP and save/load, baseline restoration and unlinking; picker/settings/slider and actual knob drop handlers; performance/UI regression checks; stopped-audio/realtime stability checks. Packaged Windows source rebuild and ZIP integrity passed. Physical-device listening was not repeated.
+
 # Agent Looper 1.2.12 — Mac / Windows parity
 
 - Added EDIT → Truncate to selection, preserving selected float PCM and pitch/stretch/reverse/filter/gain/pan settings. Undo/Redo restores/reapplies the crop.

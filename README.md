@@ -1,12 +1,12 @@
 # Agent Looper
 
-Windows 1.2.12 · Mac 1.2.12
+Windows 1.7.2 · Mac 1.2.12
 
 **It is happening again...**
 
 Native Windows and Apple Silicon Mac audio loop pedal.
 
-[Download Windows 1.2.12](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.2.12 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.12-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
+[Download Windows 1.7.2](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.2.12 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.12-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
@@ -24,13 +24,19 @@ Record starts/finishes a take; Overdub adds another pass; Play stops/restarts pl
 
 Drag the curved waveform grips to trim or extend the clip: Start has a top play-arrow grip and End has a bottom stop grip. Crossing either grip past the other reverses the selected region; crossing back restores forward playback. Scroll to zoom, Shift+scroll to pan. EDIT collapses the layer controls. EDIT → Truncate to selection discards audio outside the handles, retaining pitch/stretch/reverse/filter/level; Undo/Redo restores/reapplies the crop. The return-to-start icon beside the headphone control resets that bank to the selected region’s beginning while preserving Play/Stop. It is MIDI assignable. Pitch, stretch, filter, level and pan can be adjusted during playback; Warp synchronizes separate layers to a shared cycle. Destructive mode hides Warp.
 
-FX opens a dedicated page. In Dual mode, A SENDS and B SENDS select independent Reverb, Delay, Grain and Filter levels for each looper. Detailed effect settings and routing are shared. Freeze is independent for A and B, with a separate captured grain buffer for each looper. In SERIAL, the tabs run left to right; hold a tab still for one second before dragging it to reorder. Double-click the effect tabs to cycle Hall/Room, Delay/Ping-Pong/POTS, and Granular/Clouds/Cloud Delay. Single-click a selected FX tab to collapse its parameters. Hall has decay and tone; delay has tempo divisions; grains have independent A/B Freeze, fine Position, switches and dry/wet. Grain size spans 2–1,000 ms, Spray extends to 2 seconds, and Spread reaches 200%. CLOUDY has a stronger grain/diffusion range and smoothed live changes, including while frozen. Each looper’s filter sweeps lowpass on the left and highpass on the right, with bypass at center. Double-click knobs to restore defaults. Right-click supported buttons and knobs for MIDI Learn.
+FX opens a dedicated page. In Dual mode, A SENDS and B SENDS select independent Reverb, Delay, Grain and Filter levels for each looper. Detailed effect settings and routing are shared. Freeze is independent for A and B, with a separate captured grain buffer for each looper. In SERIAL, the tabs run left to right; hold a tab still for one second before dragging it to reorder. Double-click the effect tabs to cycle the available reverb, delay, and Granular/Clouds/Cloud Delay types. Reverbs include Hall, Room, PS1, Bloom and Tuned; delays include Delay, Ping-Pong, POTS, Crystal and Tape Echo. Single-click a selected FX tab to collapse its parameters. Hall has decay and tone; delay has tempo divisions; grains have independent A/B Freeze, fine Position, switches and dry/wet. Grain size spans 2–1,000 ms, Spray extends to 2 seconds, and Spread reaches 200%. CLOUDY has a stronger grain/diffusion range and smoothed live changes, including while frozen. Each looper’s filter sweeps lowpass on the left and highpass on the right, with bypass at center. Double-click knobs to restore defaults. Right-click supported buttons and knobs for MIDI Learn.
 
 Menus, dropdowns, buttons, displays and scroll rails use the dark app styling. **F11** enters fullscreen; **Escape** or the visible EXIT button leaves it.
 
 ## Import and export
 
-MENU → Files imports audio or extracts audio from supported video formats using Windows codecs. WAV, MP3, M4A and FLAC support depends on the installed codec. Imports can be up to ten minutes. Export writes 48 kHz stereo 32-bit float WAV. Export before closing; this Windows version does not save editable sessions.
+MENU → Files imports audio or extracts audio from supported video formats using Windows codecs. WAV, MP3, M4A and FLAC support depends on the installed codec. Imports can be up to ten minutes. Export writes 48 kHz stereo 32-bit float WAV. Save editable projects from MENU → Project; export writes an audio mix. Newly saved projects require the updated app.
+
+## Automation and LFOs (Windows 1.7.2)
+
+Click **LFO** in the centered bottom transport to open four numbered waveform squares. Drag a square onto an effect or layer knob; dragging it to more knobs adds destinations. Double-click a numbered square for Depth, Rate and Phase sliders, waveform, polarity and timing. **TARGETS…** removes individual assignments. Project saves include all assignments.
+
+**AUTO REC / FINISH** records effect and layer controls. Start/Finish lets the take define its own length; linked and fixed lengths remain available. MENU → Performance includes automation lanes and scenes. MIDI clock can follow external gear or send clock. See [Quick start](QUICK-START.md) and [release notes](RELEASE-NOTES.md).
 
 ## Build
 

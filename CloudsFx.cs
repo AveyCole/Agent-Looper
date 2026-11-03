@@ -19,9 +19,9 @@ sealed class CloudsFx {
   float cloudy=cloudySmooth;
   feedback+=(Clamp(fx.CloudFeedback,-.92f,.92f)-feedback)*.001f;
   if(--untilGrain<=0){int length=(int)(Clamp(fx.GrainSize,.002f,1f)*48000);float baseDensity=Clamp(fx.Density,1,12),density=mode==2?Clamp(baseDensity*.5f+cloudy*(Math.Min(24,baseDensity*3)-baseDensity*.5f),1,24):baseDensity;
-   untilGrain=Math.Max(32,(int)(length/density*(.85f+Random()*.3f)));
+   untilGrain=Math.Max(32,(int)(length/density*(.85f+Random()*.3f)));if(fx.GrainJitter>0)untilGrain=(int)Math.Max(32,untilGrain*(1+(Random()*2-1)*.9f*fx.GrainJitter));
    foreach(var v in voices)if(v.Age>=v.Length){v.Age=0;v.Length=length;
-    v.Rate=Math.Pow(2,Clamp(fx.GrainPitch,-12,12)/12.0);v.Band=Math.Max(8,Math.Min(32,(int)Math.Ceiling(v.Rate*16)));
+    v.Rate=Math.Pow(2,Clamp(fx.GrainPitch,-12,12)/12.0);if(fx.GrainDetune>0)v.Rate*=Math.Pow(2,(Random()*2-1)*fx.GrainDetune/1200.0);v.Band=Math.Max(8,Math.Min(32,(int)Math.Ceiling(v.Rate*16)));
     double delay=mode==2?Clamp(fx.CloudWindow,.04f,1.5f)*48000:Clamp(fx.Position,0,1.5f)*48000;
     double scatter=Random()*Clamp(fx.Spray,0,4)*(mode==2?1200+cloudy*18000:24000);
     v.Position=head-length*Math.Max(1,v.Rate)-64-delay-scatter;
@@ -32,7 +32,7 @@ sealed class CloudsFx {
   float gl=0,gr=0,wl=0,wr=0;
   foreach(var v in voices)if(v.Age<v.Length){float phase=v.Age/(float)v.Length;
    float hann=MasterFx.GrainWindow[(int)(phase*2047)],triangle=1-Math.Abs(phase*2-1);
-   float window=triangle+(hann-triangle)*v.Texture;
+   float window=ExtraFx.shape(triangle+(hann-triangle)*v.Texture,fx.grainShapeSmooth);
    gl+=MasterFx.GrainRead(left,v.Position,v.Band)*window*v.L;
    gr+=MasterFx.GrainRead(right,v.Position,v.Band)*window*v.R;
    wl+=window*v.L;wr+=window*v.R;v.Age++;v.Position+=v.Rate;

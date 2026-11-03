@@ -15,10 +15,10 @@ sealed class MidiInput:IDisposable {
  [DllImport("winmm.dll")]static extern uint midiInStop(IntPtr handle);
  [DllImport("winmm.dll")]static extern uint midiInReset(IntPtr handle);
  [DllImport("winmm.dll")]static extern uint midiInClose(IntPtr handle);
- readonly ConcurrentQueue<int> queue=new ConcurrentQueue<int>();readonly Callback callback;IntPtr handle;volatile bool closing;
+ readonly ConcurrentQueue<int> queue=new ConcurrentQueue<int>();readonly Callback callback;readonly Action<int> realtime;IntPtr handle;volatile bool closing;
  public static string[] Names(){var names=new List<string>();for(uint i=0;i<midiInGetNumDevs();i++){Caps c;if(midiInGetDevCaps((UIntPtr)i,out c,(uint)Marshal.SizeOf(typeof(Caps)))==0)names.Add(c.name);else names.Add("MIDI "+(i+1));}return names.ToArray();}
- public MidiInput(int device){callback=Receive;uint error=midiInOpen(out handle,(uint)device,callback,IntPtr.Zero,0x30000);if(error!=0)throw new Exception("MIDI input unavailable ("+error+").");error=midiInStart(handle);if(error!=0){Dispose();throw new Exception("Could not start MIDI input ("+error+").");}}
- void Receive(IntPtr h,uint message,IntPtr instance,UIntPtr data,UIntPtr time){if(closing||message!=0x3c3)return;int packed=unchecked((int)data.ToUInt64());int kind=packed&0xf0;if((kind==0x80||kind==0x90||kind==0xb0)&&queue.Count<2048)queue.Enqueue(packed);}
+ public MidiInput(int device,Action<int> clock=null){realtime=clock;callback=Receive;uint error=midiInOpen(out handle,(uint)device,callback,IntPtr.Zero,0x30000);if(error!=0)throw new Exception("MIDI input unavailable ("+error+").");error=midiInStart(handle);if(error!=0){Dispose();throw new Exception("Could not start MIDI input ("+error+").");}}
+ void Receive(IntPtr h,uint message,IntPtr instance,UIntPtr data,UIntPtr time){if(closing||message!=0x3c3)return;int packed=unchecked((int)data.ToUInt64());int kind=packed&0xf0;if((packed&255)>=248){if(realtime!=null)realtime(packed&255);return;}if((kind==0x80||kind==0x90||kind==0xb0)&&queue.Count<2048)queue.Enqueue(packed);}
  public bool TryRead(out int data){return queue.TryDequeue(out data);}
  public void Dispose(){closing=true;if(handle!=IntPtr.Zero){midiInStop(handle);midiInReset(handle);midiInClose(handle);handle=IntPtr.Zero;}}
 }
@@ -29,7 +29,7 @@ sealed class MidiBinding {
 }
 sealed class MidiMap {
  public readonly Dictionary<string,MidiBinding> Bindings=new Dictionary<string,MidiBinding>();
- public string LearnTarget,DeviceName="";public Action<string> Trigger,Learned;public Action<string,int> Value;
+ public string LearnTarget,DeviceName="",OutputName="";public int ClockMode;public Action<string> Trigger,Learned;public Action<string,int> Value;
  public static bool Continuous(string action){return action!=null&&(action.StartsWith("FX.")||action.Contains(".Layer.")||action=="MASTER");}
  readonly HashSet<int> highCC=new HashSet<int>();readonly Dictionary<int,long> lastNote=new Dictionary<int,long>();
  public void Handle(int packed){int kind=packed&0xf0,channel=packed&15,number=(packed>>8)&127,value=(packed>>16)&127,key=(channel<<8)|number;
@@ -41,8 +41,8 @@ sealed class MidiMap {
  foreach(var map in Bindings)if(map.Value.Matches(kind,channel,number)){if(Trigger!=null)Trigger(map.Key);return;}
  }
  public void ResetEdges(){highCC.Clear();lastNote.Clear();}
- public void Save(string path){using(var writer=XmlWriter.Create(path,new XmlWriterSettings{Indent=true})){writer.WriteStartElement("StrataMidi");writer.WriteAttributeString("device",DeviceName??"");foreach(var map in Bindings){writer.WriteStartElement("Binding");writer.WriteAttributeString("action",map.Key);writer.WriteAttributeString("kind",map.Value.Kind.ToString());writer.WriteAttributeString("channel",map.Value.Channel.ToString());writer.WriteAttributeString("number",map.Value.Number.ToString());writer.WriteEndElement();}writer.WriteEndElement();}}
- public void Load(string path){var document=new XmlDocument{XmlResolver=null};document.Load(path);var root=document.DocumentElement;if(root==null||root.Name!="StrataMidi")return;Bindings.Clear();DeviceName=root.GetAttribute("device");foreach(XmlNode node in root.ChildNodes){var e=node as XmlElement;if(e==null||e.Name!="Binding")continue;int kind,channel,number;if(int.TryParse(e.GetAttribute("kind"),out kind)&&int.TryParse(e.GetAttribute("channel"),out channel)&&int.TryParse(e.GetAttribute("number"),out number)&&(kind==0x90||kind==0xb0)&&channel>=0&&channel<16&&number>=0&&number<128)Bindings[e.GetAttribute("action")]=new MidiBinding{Kind=kind,Channel=channel,Number=number};}}
+ public void Save(string path){using(var writer=XmlWriter.Create(path,new XmlWriterSettings{Indent=true})){writer.WriteStartElement("StrataMidi");writer.WriteAttributeString("device",DeviceName??"");writer.WriteAttributeString("output",OutputName??"");writer.WriteAttributeString("clock",ClockMode.ToString());foreach(var map in Bindings){writer.WriteStartElement("Binding");writer.WriteAttributeString("action",map.Key);writer.WriteAttributeString("kind",map.Value.Kind.ToString());writer.WriteAttributeString("channel",map.Value.Channel.ToString());writer.WriteAttributeString("number",map.Value.Number.ToString());writer.WriteEndElement();}writer.WriteEndElement();}}
+ public void Load(string path){var document=new XmlDocument{XmlResolver=null};document.Load(path);var root=document.DocumentElement;if(root==null||root.Name!="StrataMidi")return;Bindings.Clear();DeviceName=root.GetAttribute("device");OutputName=root.GetAttribute("output");int mode;if(int.TryParse(root.GetAttribute("clock"),out mode))ClockMode=Math.Max(0,Math.Min(2,mode));foreach(XmlNode node in root.ChildNodes){var e=node as XmlElement;if(e==null||e.Name!="Binding")continue;int kind,channel,number;if(int.TryParse(e.GetAttribute("kind"),out kind)&&int.TryParse(e.GetAttribute("channel"),out channel)&&int.TryParse(e.GetAttribute("number"),out number)&&(kind==0x90||kind==0xb0)&&channel>=0&&channel<16&&number>=0&&number<128)Bindings[e.GetAttribute("action")]=new MidiBinding{Kind=kind,Channel=channel,Number=number};}}
 }
 }
 
