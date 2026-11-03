@@ -1,4 +1,14 @@
-# Agent Looper 1.2.12 — Windows
+# Agent Looper 1.2.12 — Mac / Windows parity
+
+- Added EDIT → Truncate to selection, preserving selected float PCM and pitch/stretch/reverse/filter/gain/pan settings. Undo/Redo restores/reapplies the crop.
+- Added Return to start on both bank headers, MIDI-assignable as A.Restart / B.Restart. Corrects stale origins, preserves Play/Stop, cancels pending playback and transitions smoothly while playing; peer/audio clocks stay unchanged.
+- Retained all nine internal/live recording sources and FX behavior. Other-bank sources are disabled in Single mode; input-free internal playback/resampling does not request unused microphone access.
+
+Reference: published Windows 1.2.12 ZIP at dd05c718f48fe23e972100ce59cd977220bc2258; ZIP checksum and bundled version verified. New native tests and the existing full regression suite passed. GUI truncation, cropped full-take bounds, both return buttons, layout and MIDI Learn checked. External physical MIDI was not retested.
+
+[Mac 1.2.12 release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.2.12-macos-arm64). Complete corresponding source, dependencies/licenses, validation and rebuild script are included. Requires Apple Silicon and macOS 12+. Locally signed, not Apple notarized.
+
+## Windows 1.2.12
 
 - **Truncate to selection:** directly in EDIT. Keeps the selected float audio and existing pitch, stretch, reverse, filter, level and pan settings. Undo/Redo restores/reapplies the crop.
 - **Return to start:** new MIDI-assignable button beside the headphones, plus one for B. Stopped remains stopped; playing continues from the beginning. Corrects stale bank-origin alignment after an overdub or layer replacement.

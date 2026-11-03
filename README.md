@@ -1,12 +1,12 @@
 # Agent Looper
 
-Windows 1.2.12 · Mac 1.2.8
+Windows 1.2.12 · Mac 1.2.12
 
 **It is happening again...**
 
 Native Windows and Apple Silicon Mac audio loop pedal.
 
-[Download Windows 1.2.12](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.2.8 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.8-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
+[Download Windows 1.2.12](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.2.12 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.12-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
@@ -42,7 +42,7 @@ Windows UI validation: `Agent-Looper.exe --session-ui-test`. Audio and rendering
 
 ## Mac (Apple Silicon)
 
-[Download Mac 1.2.8](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.8-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.2.8-macos-arm64)
+[Download Mac 1.2.12](https://github.com/AveyCole/Agent-Looper/releases/download/v1.2.12-macos-arm64/Agent-Looper-M1-Mac.zip) · [Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.2.12-macos-arm64)
 
 Requires macOS 12 or later on Apple Silicon (M1 and newer). Extract the ZIP and open **Agent Looper.app**, then enable AUDIO and allow microphone access. The package contains the app, complete native source, dependency sources/licenses, validation results and an offline rebuild script.
 
@@ -50,7 +50,13 @@ The Mac port follows Windows 1.2.7's interface and features: destructive/layered
 
 Regression checks and built-in microphone recording/WAV export passed on the M1 Mac. External MIDI controllers and multichannel interfaces were not physically tested. The app is locally signed, not Apple notarized. See the included README and VALIDATION.txt.
 
-### Mac 1.2.8: internal resampling
+### Mac 1.2.12: published Windows parity
+
+Matches the published Windows 1.2.12 update. **EDIT → Truncate to selection** keeps the selected float audio and existing processing settings, with Undo/Redo. Both banks have a **Return to start** icon beside the clock, preserving Play/Stop and correcting stale origins; right-click for MIDI Learn (A.Restart / B.Restart). Other-bank sources are disabled in Single mode. With no selected hardware inputs, internal playback/resampling can start without requesting unused microphone access.
+
+Validated against the downloaded Windows ZIP and its bundled 1.2.12 source. Native truncate/restart/resampling regressions and GUI menu/header checks passed. External physical MIDI was not retested. Mac window chrome and Core Audio are platform adaptations.
+
+### Internal resampling
 
 Both banks now offer the other bank pre/post-FX, Self post-FX, and A+B post-FX as recording sources, each with a Live + variant. In B’s ⋯ → Input menu choose **Looper A · post-FX** to capture A’s effects. In A choose **Self · post-FX (resample)**, then DUB to capture A as an overdub. Other-bank sources require Dual mode. Internal-only capture works without selected hardware inputs and excludes click/monitoring. Source choices persist in sessions.
 
