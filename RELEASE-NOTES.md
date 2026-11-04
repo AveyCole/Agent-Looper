@@ -1,3 +1,31 @@
+# Agent Looper 1.9.0 — Apple Silicon Mac
+
+Native Apple Silicon Mac update matching the published Windows 1.9.0 build, retaining VST3 and Audio Unit hosting.
+
+- **MAC AUDIO · Chrome / Desktop**: record a selected playback device alongside hardware inputs, including silence. Requires macOS 14.2+ and system-audio recording permission. No screen video is captured.
+- Per-layer **Snap pitch to semitones**.
+- **Repitch · linked speed / pitch**: twice the duration is one octave lower.
+- **Cyclic · S950-style** live stretch with 5–100 ms D-time. Original stereo cyclic overlap-add DSP inspired by vintage samplers; not Akai code or bit-exact hardware emulation.
+- 2×2 LFO source picker with clearer outline; send labels follow the effect type/plugin name.
+- Playback settings persist in projects, scenes and history and apply to export. Older projects load; newly saved .agw files require 1.9+.
+
+Playback settings: EDIT → Playback or a layer's ⋯ → Playback. Desktop inputs: AUDIO. Desktop capture includes Agent Looper when it plays through the selected device; desktop software monitoring is disabled to avoid an immediate feedback loop. The selected device's first stream/channel pair is captured.
+
+Validated native pitch/duration, live sweeps, cyclic stereo/D-time, snapping, history/scenes/export; project/session roundtrips; actual UI edits and Save/Load; AU pop-out/reattachment; real VST3/AUv2/AUv3 audio/state/export; and real desktop silent/tone capture without microphone input. Simultaneous external-interface+desktop timing, multichannel hardware and physical MIDI were not retested. See VALIDATION.txt.
+
+VST3/AUv2 native editors remain available. AUv3 defaults to parameter controls because Koala FX's remote custom editor is blank on this Mac; custom remote views remain experimental. Effects must be installed separately as Mac Apple Silicon/Universal builds.
+
+Extract the complete ZIP and open **Agent Looper.app**. Apple Silicon, macOS 12+ (desktop capture 14.2+). Locally ad-hoc signed, not Apple notarized. Complete source, dependency sources/licenses and offline build script included.
+
+Windows reference: f1278d12a12f9d3a7bbb36e59b3b9c89a09dab35; shipped Windows ZIP checksum and AssemblyVersion 1.9.0.0 verified.
+
+SHA-256 (`Agent-Looper-M1-Mac.zip`):
+```
+0964a941599a33aa54644fd6e044efe244bf1486b0bd8faaae0e82735b292c4f
+```
+
+[Mac release and checksum](https://github.com/AveyCole/Agent-Looper/releases/tag/v1.9.0-macos-arm64).
+
 # Agent Looper 1.9.0 — Windows
 
 - Clearer popup borders and a 2×2 LFO source picker.
@@ -8,7 +36,7 @@
 
 Find playback settings under **EDIT → Playback**, or a layer's **⋯ → Playback**. Find PC loopback in **AUDIO → input list**. Loopback includes this app if it plays through the same shared device.
 
-Settings persist in projects, scenes and history, and apply to export. Older projects load; newly saved projects require 1.9.0 or newer. Mac 1.8.0 does not read the new Windows project format.
+Settings persist in projects, scenes and history, and apply to export. Older projects load; newly saved projects require 1.9.0 or newer. Mac 1.9.0 reads the new Windows project format.
 
 Validated: linked frequency/duration and live sweeps; cyclic pitch, duration, stereo and D-time; project/scene round-trips; actual menu actions; 2×2 picker; real Zoom L6 WASAPI loopback record/finish including silence; session UI, LFO, performance and VST3 regressions. Packaged source rebuilt and tested. Mixed ASIO+loopback timing has not been tested.
 
