@@ -1,6 +1,8 @@
-# Agent Looper 1.8.1 (Windows)
+# Agent Looper 1.9.0 (Windows)
 
 It is happening again...
+
+**New in 1.9.0:** AUDIO includes PC AUDIO · Chrome / Desktop inputs. EDIT → Playback adds semitone snapping, linked pitch/speed, and Cyclic · S950-style stretch with D-time. The LFO picker is 2×2 with clearer borders. Newly saved projects require 1.9.0 or newer.
 
 Send-knob labels now display the selected effect or plugin, updating when you change types or switch A/B sends.
 

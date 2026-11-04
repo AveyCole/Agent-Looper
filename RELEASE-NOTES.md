@@ -1,3 +1,19 @@
+# Agent Looper 1.9.0 — Windows
+
+- Clearer popup borders and a 2×2 LFO source picker.
+- **PC AUDIO · Chrome / Desktop** inputs capture a selected Windows playback device, including silence. Available alongside ASIO inputs when the devices support simultaneous use.
+- Per-layer **Snap pitch to semitones**.
+- **Repitch · linked speed / pitch**: the pitch and stretch controls follow one another. Twice the duration is one octave lower.
+- **Cyclic · S950-style** live stretch with a 5–100 ms D-time control for vintage metallic textures. This is original stereo cyclic overlap-add DSP inspired by vintage samplers, not Akai code or bit-exact hardware emulation. Existing R3 modes remain available.
+
+Find playback settings under **EDIT → Playback**, or a layer's **⋯ → Playback**. Find PC loopback in **AUDIO → input list**. Loopback includes this app if it plays through the same shared device.
+
+Settings persist in projects, scenes and history, and apply to export. Older projects load; newly saved projects require 1.9.0 or newer. Mac 1.8.0 does not read the new Windows project format.
+
+Validated: linked frequency/duration and live sweeps; cyclic pitch, duration, stereo and D-time; project/scene round-trips; actual menu actions; 2×2 picker; real Zoom L6 WASAPI loopback record/finish including silence; session UI, LFO, performance and VST3 regressions. Packaged source rebuilt and tested. Mixed ASIO+loopback timing has not been tested.
+
+Extract the full ZIP and keep its DLLs, tools and licenses beside Agent-Looper.exe. Rebuild the portable package with source/build.ps1. No APK or Android source is included.
+
 # Agent Looper 1.8.1 — Windows
 
 Send-knob labels now show the selected effect type or plugin name. Labels update when cycling types, replacing a VST3, restoring a built-in effect, or switching A/B sends. Long names stay within the control's label area.
