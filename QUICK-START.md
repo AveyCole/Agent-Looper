@@ -1,6 +1,8 @@
-# Agent Looper 1.8.0 (Windows)
+# Agent Looper 1.8.1 (Windows)
 
 It is happening again...
+
+Send-knob labels now display the selected effect or plugin, updating when you change types or switch A/B sends.
 
 FX type buttons now retain their screen positions while parameter panels collapse/expand or change size, so repeated double taps can cycle types at the same coordinates. Intentional serial-routing drag reorder still works.
 
@@ -83,4 +85,4 @@ The rack adds 64 samples (about 1.33 ms), plus reported plugin latency. Wet/dry 
 
 Extract the ENTIRE ZIP and run Agent-Looper.exe. Keep AgentVst3.dll, other DLLs, tools and licenses together. New projects saved by this version require this update; earlier Windows projects remain readable.
 
-Validated with TAL-Reverb-2, TAL-Chorus-LX and ValhallaSupermassive; editor attachment/resizing/tab switches/popout/reattachment; latency fixtures for all routing modes; project/save/dirty/missing-plugin checks; 60 seconds of simulated silent three-plugin processing; existing performance/session/audio checks. Physical interface listening has not been repeated. Android and Mac are unchanged. Nothing published.
+Validated with TAL-Reverb-2, TAL-Chorus-LX and ValhallaSupermassive; editor attachment/resizing/tab switches/popout/reattachment; latency fixtures for all routing modes; project/save/dirty/missing-plugin checks; 60 seconds of simulated silent three-plugin processing; existing performance/session/audio checks. Physical interface listening has not been repeated. No APK or Android source is included in the Windows download.

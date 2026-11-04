@@ -1,12 +1,12 @@
 # Agent Looper
 
-Windows 1.8.0 · Mac 1.8.0
+Windows 1.8.1 · Mac 1.8.0
 
 **It is happening again...**
 
 Native Windows and Apple Silicon Mac audio loop pedal.
 
-[Download Windows 1.8.0](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.8.0 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.8.0-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
+[Download Windows 1.8.1](https://github.com/AveyCole/Agent-Looper/raw/refs/heads/main/Agent-Looper-Windows.zip) · [Download Mac 1.8.0 (Apple Silicon)](https://github.com/AveyCole/Agent-Looper/releases/download/v1.8.0-macos-arm64/Agent-Looper-M1-Mac.zip) · [Portable Windows ZIP](Agent-Looper-Windows.zip) · [Release notes](RELEASE-NOTES.md) · [Download page](https://aveycole.github.io/Agent-Looper/)
 
 ![Windows interface](docs/screenshot.png)
 
@@ -24,7 +24,7 @@ Record starts/finishes a take; Overdub adds another pass; Play stops/restarts pl
 
 Drag the curved waveform grips to trim or extend the clip: Start has a top play-arrow grip and End has a bottom stop grip. Crossing either grip past the other reverses the selected region; crossing back restores forward playback. Scroll to zoom, Shift+scroll to pan. EDIT collapses the layer controls. EDIT → Truncate to selection discards audio outside the handles, retaining pitch/stretch/reverse/filter/level; Undo/Redo restores/reapplies the crop. The return-to-start icon beside the headphone control resets that bank to the selected region’s beginning while preserving Play/Stop. It is MIDI assignable. Pitch, stretch, filter, level and pan can be adjusted during playback; Warp synchronizes separate layers to a shared cycle. Destructive mode hides Warp.
 
-FX opens a dedicated page. In Dual mode, A SENDS and B SENDS select independent Reverb, Delay, Grain and Filter levels for each looper. Detailed effect settings and routing are shared. Freeze is independent for A and B, with a separate captured grain buffer for each looper. In SERIAL, the tabs run left to right; hold a tab still for one second before dragging it to reorder. Double-click the effect tabs to cycle the available reverb, delay, and Granular/Clouds/Cloud Delay types. Reverbs include Hall, Room, PS1, Bloom and Tuned; delays include Delay, Ping-Pong, POTS, Crystal and Tape Echo. Single-click a selected FX tab to collapse its parameters. Hall has decay and tone; delay has tempo divisions; grains have independent A/B Freeze, fine Position, switches and dry/wet. Grain size spans 2–1,000 ms, Spray extends to 2 seconds, and Spread reaches 200%. CLOUDY has a stronger grain/diffusion range and smoothed live changes, including while frozen. Each looper’s filter sweeps lowpass on the left and highpass on the right, with bypass at center. Double-click knobs to restore defaults. Right-click supported buttons and knobs for MIDI Learn.
+FX opens a dedicated page. In Dual mode, A SENDS and B SENDS select independent Reverb, Delay, Grain and Filter levels for each looper. Detailed effect settings and routing are shared. Send-knob labels follow the selected effect type or plugin name, including when switching A/B sends. Freeze is independent for A and B, with a separate captured grain buffer for each looper. In SERIAL, the tabs run left to right; hold a tab still for one second before dragging it to reorder. Double-click the effect tabs to cycle the available reverb, delay, and Granular/Clouds/Cloud Delay types. Reverbs include Hall, Room, PS1, Bloom and Tuned; delays include Delay, Ping-Pong, POTS, Crystal and Tape Echo. Single-click a selected FX tab to collapse its parameters. Hall has decay and tone; delay has tempo divisions; grains have independent A/B Freeze, fine Position, switches and dry/wet. Grain size spans 2–1,000 ms, Spray extends to 2 seconds, and Spread reaches 200%. CLOUDY has a stronger grain/diffusion range and smoothed live changes, including while frozen. Each looper’s filter sweeps lowpass on the left and highpass on the right, with bypass at center. Double-click knobs to restore defaults. Right-click supported buttons and knobs for MIDI Learn.
 
 Menus, dropdowns, buttons, displays and scroll rails use the dark app styling. **F11** enters fullscreen; **Escape** or the visible EXIT button leaves it.
 

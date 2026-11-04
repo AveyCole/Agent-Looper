@@ -1,3 +1,11 @@
+# Agent Looper 1.8.1 — Windows
+
+Send-knob labels now show the selected effect type or plugin name. Labels update when cycling types, replacing a VST3, restoring a built-in effect, or switching A/B sends. Long names stay within the control's label area.
+
+The send controls retain their existing MIDI, LFO and automation assignments. Existing Windows 1.8.0 projects remain compatible.
+
+Validated with the Windows session UI checks and real VST3 replacement/editor tests, including the plugin-name send label. Download the complete Windows ZIP and keep its DLLs, tools and licenses beside Agent-Looper.exe. No APK or Android source is included in the Windows package.
+
 # Agent Looper 1.8.0 — Apple Silicon Mac · VST3 + Audio Units
 
 Adds Windows 1.8.0 VST3 effect hosting to the native Apple Silicon Mac app, plus Audio Unit effects (AUv2/AUv3).
